@@ -1,0 +1,35 @@
+/* 发送验证码按钮隐藏，并展示倒数60s提示 */
+/* .hide{
+ display: none;
+}
+.show{
+ display: block;
+} */
+
+/* info.wxss */
+.container {
+  font-size: 16px;
+}
+
+.section {
+display: flex;
+margin: 16rpx;
+padding: 16rpx;
+border-bottom: 1rpx solid #CFD8DC;
+}
+
+text {
+  width: 200rpx;
+}
+
+button {
+  margin: 16rpx;
+}
+
+.sendMsg {
+  font-size: 12;
+  margin-right: 0;
+  padding: 0;
+  height: inherit;
+  width: 80rpx;
+}

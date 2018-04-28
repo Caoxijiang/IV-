@@ -1,0 +1,36 @@
+<!-- <text>绑定手机</text>
+<form bindsubmit="bindMobile">
+<view class="form_group">
+        <text>手  机：</text>
+        <input type="number" placeholder="请输入手机号" maxlength="11" name="data_phone" value="" auto-focus="true" bindblur="blur_mobile" />
+        <button type="button" class="{{is_show?'show':'hide'}}" bindtap="clickVerify">获取验证码</button>
+        <button type="button" class="{{is_show?'hide':'show'}}">重新发送{{last_time}}秒</button>
+    </view>
+
+<input type="number" placeholder="请输入验证码" maxlength="6" name="data_verify" value="" bindblur="blur_sms"/>
+<button class="save_btn" type="{{buttonType}}" disabled="{{disabled}}" form-type="submit">确认绑定</button>
+</form> -->
+
+<!--info.wxml-->
+<view class="container">
+
+  <view class="section">
+    <text>手机号码</text>
+    <input placeholder="请输入手机号码" type="number" maxlength="11" bindinput="inputPhoneNum" auto-focus />
+    <text wx:if="{{send}}" class="sendMsg" bindtap="sendMsg">发送</text>
+    <text wx:if="{{alreadySend}}" class="sendMsg" bindtap="sendMsg">{{second+"s"}}</text>
+  </view>
+
+  <view class="section">
+    <text>短信验证</text>
+    <input placeholder="短信验证码" type="number" bindinput="addCode" />
+  </view>
+
+  <!-- <view class="section">
+    <text>其他信息</text>
+    <input placeholder="需要提交的信息" bindinput="addOtherInfo" />
+  </view> -->
+
+  <button type="{{buttonType}}" disabled="{{disabled}}" bindtap="onSubmit">提交</button>
+
+</view>

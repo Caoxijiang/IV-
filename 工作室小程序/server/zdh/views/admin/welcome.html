@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% extends '../layout.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   <title>{% block title %}登录成功 {% endblock %}</title>
+</head>
+{% block content %}
+<body>
+        <!-- multiple(多文件上传) -->
+        <!-- <input type="file" multiple id="inputs"/> 
+        <div id='dd'></div>
+        <script>
+        $(document).ready(function () {
+        $("#inputs").change(function () {
+        var fil = this.files;
+        for (var i = 0; i < fil.length; i++) {
+        reads(fil[i]);
+        }
+        });
+        });
+        function reads(fil){
+        var reader = new FileReader();
+        reader.readAsDataURL(fil);
+        reader.onload = function()
+        {
+        document.getElementById("dd").innerHTML += "<img src='"+reader.result+"'>";
+        };
+        }
+        </script> -->
+        <form id="uploadForm"  method="post" enctype="multipart/form-data">
+            <input type="file" id="fileId" name="image" value="请上传图片" />
+            <input type="hidden" id="hiddId" name="id" value="1"/>
+            <div id="div_username"><input type="text" name="topic" id="topic" class="text_field" placeholder="请输入会议标题"/></div>
+            <div id="div_password"><input type="text" name="Summary" id="Summary" class="text_field" placeholder="请输入会议摘要"/></div>     
+            <input type="button" id="submit" value="上传"/>
+            <script type="text/javascript" src="../../public/js/upload.js"></script>
+           <!-- {% include  '../../public/js/upload.js' %} -->
+        </form>
+
+
+</body>
+{% endblock %}
+</html>

@@ -1,0 +1,40 @@
+<view class="container">
+  <view class='selection'>
+    <swiper indicator-dots="true"
+    autoplay="true" interval="3000" duration="1000">
+    <block wx:for="{{imgUrls}}" wx:key="key">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image" width="100%"/>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+
+ <view class='selection'>
+    <view class="header">
+      <text>会议推荐</text>
+      <text class="text-all">会议列表</text>
+    </view>
+
+  <view class="content">
+      <view class="content-item"wx:for="{{contentItems}}" wx:key="key">
+        <image src="../../images/test1.jpg"/>
+
+        <view class='content-item-text'>
+          <text>会议详情</text>
+        </view>
+
+      </view>
+
+
+
+
+  </view>
+
+
+ </view>
+  <view class='selection'>
+  
+  </view> 
+
+</view>
