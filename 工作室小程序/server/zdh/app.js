@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 require('body-parser-xml')(bodyParser)
 var session = require('express-session'); 
+var swig=require('swig');
 var index = require('./routes/index');
 var sms = require('./routes/sms');
 var weixin= require('./routes/weixin');
@@ -13,11 +14,7 @@ var wx_Pay=require('./routes/wxPay');
 var orders=require('./routes/orders');
 var imageserver=require('./imageserver/imageserver');
 var image=require('./routes/image');
-//var ejs=require('ejs');
-var swig=require('swig');
 var adminligin=require('./routes/adminlogin');
-
-//var redis=require("./Redis/RedisServer");
 var redis = require('redis');
 var session = require('express-session');
 var RedisStore = require('connect-redis')(session);
@@ -35,6 +32,21 @@ app.set('views', path.join(__dirname, 'views'));
 app.engine('html',swig.renderFile);
 app.set('view engine', 'html');
 
+
+
+
+app.use(session({
+  secret: 'sessiontest',  // 用来对session id相关的cookie进行签名
+  //store: new FileStore(),  // 本地存储session（文本文件，也可以选择其他store，比如redis的）
+  saveUninitialized: false,  // 是否自动保存未初始化的会话，建议false
+  resave: false,  // 是否每次都重新保存会话，建议false
+  cookie: {
+      maxAge: 100 * 6000  // 有效期，单位是毫秒
+  }
+}));
+
+
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -42,27 +54,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cookieParser('sessiontest'));
-// app.use(express.static(path.join(__dirname, 'public')));
 app.use('/public', express.static('public'));
+
 
 // app.use(function (req, res, next) {
 //   var url = req.originalUrl;
-//   if (url != "/" && !req.session.user) {
+//   if (url != "/" && !req.session.userName) {
 //       return res.redirect("/");
 //   }
 //   next();
 // });
-
-app.use(session({
-  secret:"caoxijiang",
-  cookie:{
-    maxAge:10000*60
-  },
-  resave:true,
-  saveUninitialized:true
-  
-}));
-
 
 
 

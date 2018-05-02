@@ -13,12 +13,6 @@ $().ready(function(){
             a.append("id", 1);
             a.append("topic",$('#topic').val());
     
-            // function GetQueryString(name) {
-            //     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)","i");
-            //     var r = window.location.search.substr(1).match(reg);
-            //     if (r!=null) return (r[2]); return null;
-            //  }
-            //  alert(GetQueryString(amintoken))
             var formData = new FormData($( "#uploadForm" )[0]);  
         
             $.ajax({ 
