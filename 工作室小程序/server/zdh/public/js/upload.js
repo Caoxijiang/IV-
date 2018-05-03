@@ -42,11 +42,11 @@ $().ready(function(){
                 },
                 success: function(res){ 
                     // 请求成功
-                    alert(res)
+                    alert(res.msg)
                 },
                 error: function(res) {
                     // 请求失败
-                    alert(res)
+                    alert(res.msg)
                     console.log(res);
                 }
             }); 

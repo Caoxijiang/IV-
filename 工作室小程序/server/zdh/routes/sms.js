@@ -19,15 +19,15 @@ router.all('/phonelogin', function(req, res, next) {
         }else{      
             console.log("登陆验证码："+TemplateParam);
               // ACCESS_KEY_ID/ACCESS_KEY_SECRET 根据实际申请的账号信息进行替换
-            var accessKeyId = 'LTAI9x17FFVyeSVJ'
-            var secretAccessKey = 'endO0HBu9UTvYZiG0KqROAIMkjbtJV'
+            var accessKeyId = 'LTAITtZfSpvTZYCr'
+            var secretAccessKey = '3rBQlXQH3cWZbnEnTXM2g1pMnMhEld'
             //初始化sms_client
             var smsClient = new SMSClient({accessKeyId, secretAccessKey})
             //发送短信
               smsClient.sendSMS({
                   PhoneNumbers:PhoneNumbers ,
-                  SignName: '曹caoxijiang',
-                  TemplateCode: 'SMS_132320046',
+                  SignName: '阿里云短信测试专用',
+                  TemplateCode: 'SMS_134080287',
                   TemplateParam: TemplateParam
             }).then(function (respance) {
                 var Code=respance.Code

@@ -28,14 +28,28 @@
         };
         }
         </script> -->
+
         <form id="uploadForm"  method="post" enctype="multipart/form-data">
             <input type="file" id="fileId" name="image" value="请上传图片" />
             <input type="hidden" id="hiddId" name="id" value="1"/>
             <div id="div_username"><input type="text" name="topic" id="topic" class="text_field" placeholder="请输入会议标题"/></div>
-            <div id="div_password"><input type="text" name="Summary" id="Summary" class="text_field" placeholder="请输入会议摘要"/></div>     
+            <div id="div_password"><input type="text" name="Summary" id="Summary" class="text_field" placeholder="请输入会议摘要"/></div> 
+            <div id="data"><input  type="text" id="datetimeStart" readonly class="form_datetime" placeholder="会议时间 ：yyyy-mm-dd"></div>      
             <input type="button" id="submit" value="上传"/>
             <script type="text/javascript" src="../../public/js/upload.js"></script>
            <!-- {% include  '../../public/js/upload.js' %} -->
+           <script>
+               $().ready(function(){
+                $('#datetimeStart').datetimepicker({
+                    language: 'zh-CN',//显示中文
+                    format: 'yyyy-mm-dd',//显示格式
+                    minView: "month",//设置只显示到月份
+                    initialDate: new Date(),//初始化当前日期
+                    autoclose: true,//选中自动关闭
+                    todayBtn: true//显示今日按钮
+                    })
+               })
+           </script>
         </form>
 
 

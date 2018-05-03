@@ -6,7 +6,7 @@ var formidable = require("formidable");
 // var imageInfo=require("../dao/imagesDao");
 var secret = require('../conf/secret');
 var url=require('../conf/imageconf').url;
-
+var meetingeDao=require('../dao/mettinginfoDao');
 router.all('/uploadImage', function(req, res) {
         console.log(req.session.userName);
         if(req.originalUrl != "/" && !req.session.userName){
@@ -44,16 +44,22 @@ router.all('/uploadImage', function(req, res) {
                            var uploadDir = "./public/images/" + newName;
                            fs.rename(file.path, uploadDir, function(err) {
                                if (err) {
-                                   //res.send("");
-                                   res.end('存入服务器失败');
+                                   res.end({msg:"图片存入服务器失败"});
                                }else{
-                                   //res.end('SUCCESS');
                                    var meetingInfo={};
-                                   meetingInfo.topic=fields.potic;
+                                   meetingInfo.url=url+uploadDir.replace(".","");
+                                   meetingInfo.topic=fields.topic;
                                    meetingInfo.Summary=fields.Summary;
                                    meetingInfo.admin=req.session.userName;
-                                   
-                               }
+                                   meetingeDao.insertmeetingInfo(meetingInfo,function(data){
+                                        if(data.msg=="SUCCESS"){
+                                            res.send({msg:"会议信息上传成功"}) 
+                                        }else{
+                                            res.send({msg:"会议信息上传失败"})
+                                        }
+                                   })
+
+                            }
                        })
            
                    }
@@ -146,5 +152,25 @@ router.all('/uploadImage', function(req, res) {
  
           });
       });
+
+
+
+
+
+
+
+
+
+      exports.delete=function(req,res){//删除图片  
+        var fileName=req.params.id;  
+        fs.unlink("./public/images/"+fileName);  
+        res.redirect('http://localhost:3000');  
+    };  
+    
+
+
+
+
+
 
 module.exports = router;
