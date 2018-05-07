@@ -17,6 +17,7 @@
     "express": "~4.15.5",
     "express-session": "^1.15.6",
     "formidable": "^1.2.1",
+    "https": "^1.0.0",
     "jade": "~1.11.0",
     "jquery": "^3.3.1",
     "morgan": "~1.9.0",

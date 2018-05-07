@@ -2,9 +2,11 @@ $().ready(function(){
     $("#submit").click(function () {
         var topic=$('#topic').val().ser;
         var Summary=$('#Summary').val();
+        var datetimeStart=$("#datetimeStart").val();
+       // alert(datetimeStart)
         var image=$("#fileId")[0].files[0];
         console.log(image);
-        if(topic==''|| Summary==''||image==undefined){
+        if(topic==''|| Summary==''||image==undefined || datetimeStart==""){
             
             alert('请选择上传信息');
         }else{

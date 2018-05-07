@@ -35,11 +35,6 @@ function keyLogin(event) {
             },
            
             function(callbackData){
-                // if(callbackData.msg=="href"){
-                //     window.location.href = "welcome.html";
-                // }else{
-                //     alert(callbackData.msg)
-                // }
                 if(callbackData.msg=="href"){
                     //console.log(callbackData.amintoken)
                     var amintoken=callbackData.amintoken
