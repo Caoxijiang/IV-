@@ -26,7 +26,7 @@ router.all('/phonelogin', function(req, res, next) {
             //发送短信
               smsClient.sendSMS({
                   PhoneNumbers:PhoneNumbers ,
-                  SignName: '阿里云短信测试专用',
+                  SignName: 'IEEE IV 2018',
                   TemplateCode: 'SMS_134080287',
                   TemplateParam: TemplateParam
             }).then(function (respance) {
