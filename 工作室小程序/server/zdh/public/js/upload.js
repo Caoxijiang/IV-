@@ -3,7 +3,7 @@ $().ready(function(){
         var topic=$('#topic').val().ser;
         var Summary=$('#Summary').val();
         var datetimeStart=$("#datetimeStart").val();
-       // alert(datetimeStart)
+        alert(datetimeStart)
         var image=$("#fileId")[0].files[0];
         console.log(image);
         if(topic==''|| Summary==''||image==undefined || datetimeStart==""){
@@ -14,7 +14,7 @@ $().ready(function(){
             a.append("image", image);
             a.append("id", 1);
             a.append("topic",$('#topic').val());
-    
+            a.append("datetimeStart",$("#datetimeStart").val());
             var formData = new FormData($( "#uploadForm" )[0]);  
         
             $.ajax({ 

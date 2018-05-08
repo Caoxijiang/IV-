@@ -9,8 +9,8 @@ var wxuserDao=require('../dao/wxuserDao')
 var util=require('../util/util');
 // var uuid = require('node-uuid');
 /* 微信登陆 */
-var AppID = 'wx7b0242dba33023c4';
-var AppSecret = 'f26de2014bb1cd12c915ec7582811594';
+var AppID = 'wx5e7537035eaaf2ba';
+var AppSecret = '48424f8224b05cae5359abf8ea6a9a23';
 router.get('/wx_login', function (req, res, next) {
     var code = req.query.code
     request.get({
@@ -18,8 +18,8 @@ router.get('/wx_login', function (req, res, next) {
       json: true,
       qs: {
         grant_type: 'authorization_code',
-        appid: 'wx7b0242dba33023c4',
-        secret: 'f26de2014bb1cd12c915ec7582811594',
+        appid: 'wx5e7537035eaaf2ba',
+        secret: '48424f8224b05cae5359abf8ea6a9a23',
         js_code: code
       }
     },(err, response, data) => {
