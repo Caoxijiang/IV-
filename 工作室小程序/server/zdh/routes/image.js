@@ -7,6 +7,7 @@ var formidable = require("formidable");
 var secret = require('../conf/secret');
 var url=require('../conf/imageconf').url;
 var meetingeDao=require('../dao/mettinginfoDao');
+var deleteimages=require('../util/util').delete;
 router.all('/uploadImage', function(req, res) {
         console.log(req.session.userName);
         if(req.originalUrl != "/" && !req.session.userName){
@@ -50,12 +51,13 @@ router.all('/uploadImage', function(req, res) {
                                    meetingInfo.url=url+uploadDir.replace(".","");
                                    meetingInfo.topic=fields.topic;
                                    meetingInfo.Summary=fields.Summary;
+                                   meetingInfo.datetimeStart=fields.datetimeStart.toString();
                                    meetingInfo.admin=req.session.userName;
                                    meetingeDao.insertmeetingInfo(meetingInfo,function(data){
                                         if(data.msg=="SUCCESS"){
                                             res.send({msg:"会议信息上传成功"}) 
                                         }else{
-                                            res.send({msg:"会议信息上传失败"})
+                                            deleteimages(uploadDir)
                                         }
                                    })
 
@@ -123,7 +125,7 @@ router.all('/uploadImage', function(req, res) {
                                      }
                                      var commodityInfo={};
                                      // var commodityInfo={};
-                                     var url="http://192.168.1.109:3006";
+                                     //var url="http://192.168.1.109:3006";
                              
                                      commodityInfo.openid=openid;
                                      commodityInfo.path=url+uploadDir.replace(".","")
@@ -135,7 +137,8 @@ router.all('/uploadImage', function(req, res) {
                                             res.send(msg);
                                         }else{
                                             var msg="图片入库失败";
-                                            res.send(msg);
+                                            delete(req)
+                                           // res.send(msg);
                                         }                      
                                     })
                                      // //res.write("upload image:<br/>");
@@ -152,22 +155,6 @@ router.all('/uploadImage', function(req, res) {
  
           });
       });
-
-
-
-
-
-
-
-
-
-      exports.delete=function(req,res){//删除图片  
-        var fileName=req.params.id;  
-        fs.unlink("./public/images/"+fileName);  
-        res.redirect('http://localhost:3000');  
-    };  
-    
-
 
 
 

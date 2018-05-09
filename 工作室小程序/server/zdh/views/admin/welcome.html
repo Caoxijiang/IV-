@@ -34,9 +34,10 @@
             <input type="hidden" id="hiddId" name="id" value="1"/>
             <div id="div_username"><input type="text" name="topic" id="topic" class="text_field" placeholder="请输入会议标题"/></div>
             <div id="div_password"><input type="text" name="Summary" id="Summary" class="text_field" placeholder="请输入会议摘要"/></div> 
-            <div id="data"><input  type="text" id="datetimeStart" readonly class="form_datetime" placeholder="会议时间 ：yyyy-mm-dd"></div>      
+            <div id="data"><input  type="text" name="datetimeStart" id="datetimeStart" readonly class="form_datetime" placeholder="会议时间 ：yyyy-mm-dd"></div>      
             <input type="button" id="submit" value="上传"/>
             <script type="text/javascript" src="../../public/js/upload.js"></script>
+           
            <!-- {% include  '../../public/js/upload.js' %} -->
            <script>
                $().ready(function(){
@@ -51,6 +52,11 @@
                })
            </script>
         </form>
+        <script type="text/javascript" src="../../public/js/selectmeetinfoList.js"></script>
+        <div>
+            <input type="button" id="test1" value="查询会议信息"/>
+          
+        </div>
 
 
 </body>

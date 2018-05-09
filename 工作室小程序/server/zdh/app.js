@@ -15,6 +15,7 @@ var orders=require('./routes/orders');
 var imageserver=require('./imageserver/imageserver');
 var image=require('./routes/image');
 var adminligin=require('./routes/adminlogin');
+var adminmetting=require('./routes/adminmeetingList')
 var redis = require('redis');
 var session = require('express-session');
 var RedisStore = require('connect-redis')(session);
@@ -75,7 +76,7 @@ app.use('/wxPay',wx_Pay);
 app.use('/orders',orders);
 //app.use("./imageserver/imageserver",imageserver);
 app.use('/image',image);
-
+app.use('/adminmetting',adminmetting)
 
 //app.use('/redis',redis);
 // catch 404 and forward to error handler

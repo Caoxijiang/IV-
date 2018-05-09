@@ -13,3 +13,17 @@
     }
 
 
+
+
+    exports.delete=function(req,res){//删除图片  
+        if(req){
+            var fileName=req;  
+            fs.unlink("./public/images/"+fileName);  
+            res.send({msg:"失败"})  
+            res.redirect('/');  
+        }else{
+            res.send({msg:"未找到删除图片信息"})
+        }
+
+    };  
+
