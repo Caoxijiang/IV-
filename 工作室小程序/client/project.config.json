@@ -21,13 +21,35 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
-			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
 			"current": -1,
-			"list": []
+			"list": [
+				{
+					"id": -1,
+					"name": "大会简介",
+					"pathName": "pages/Introduction/Introduction",
+					"query": ""
+				},
+				{
+					"id": 1,
+					"name": "大会日程",
+					"pathName": "pages/Schedule/Schedule",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "大会简介",
+					"pathName": "pages/time/time",
+					"query": ""
+				}
+			]
 		}
 	}
 }

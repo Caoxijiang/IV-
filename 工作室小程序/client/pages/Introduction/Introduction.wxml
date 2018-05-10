@@ -1,0 +1,48 @@
+ <view class="item-header">
+      <!--<view class='item-city'>
+         
+      </view>-->
+      <view class="item-search">
+      <image class="item-image" src="/../../images/index-icon/未标题-1-12.png"/>
+       <input class="item-input" placeholder="搜索" focus="{{focus}}" />
+      </view>
+  </view>
+
+<swiper indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-dots="true" autoplay="true">
+  <block  wx:for="{{imgUrls}}">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image" width="355" height="150"/>
+    </swiper-item>
+  </block>
+</swiper>
+<view class="introduction-forum">
+  <view class="introduction-content">
+      <view class='introduction-title introduction-line'>2018动漫高峰论坛</view>
+      <view class='introduction-line'>
+      <image class='introduction-img' src='/../../images/introduction-icon/2-04.png'></image>2018.06/26 08:00-2016.06/29 18:00
+      </view>
+     <view class='introduction-line'><image class='introduction-img' src='/../../images/introduction-icon/2-05.png'></image>常熟虞山镇黄河路288号常熟国际饭店</view>
+      <view class='introduction-moey introduction-line'><image class='introduction-img' src='/../../images/introduction-icon/2-06.png'></image>600起</view>
+  </view>
+</view>
+<view class='introduction-body'>
+   <view class='introduction-msg'>
+      <view class='introduction-bodyTitle'>
+       <image src='/../../images/introduction-icon/2-02.png' />
+       大会介绍
+       <image src='/../../images/introduction-icon/2-03.png' />
+      </view>
+      <view class='introduction-bodyContent'>
+            <text>
+             由IEEE智能交通系统协会（ITSS）主办的第29届国际智能车大会（IEEE IV 2018）将于2018年6月26日在中国常熟开幕。IEEE intelligent Vehicle Symposium(IEEE国际智能车大会）是IEEE智能交通协会举办的两大年度旗舰会议之一，旨在为全球该领域相关的研究人员,工程师，学着提供当今最先进技术的交流研讨机会。\n
+            </text>
+      </view>
+   </view>
+</view>
+<view>
+</view>
+<view class='introduction-footer'>
+     <view class='introduction-footerL'><image src='/../../images/introduction-icon/2-07.png'></image>分享会议</view>
+     <view class='introduction-footerR'>立即报名</view>
+</view>

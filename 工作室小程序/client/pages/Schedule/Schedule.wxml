@@ -1,0 +1,69 @@
+<!--index.wxml-->
+ <view class="item-header">
+      <!--<view class='item-city'>
+         
+      </view>-->
+      <view class="item-search">
+      <image class="item-image" src="../../images/index-icon/未标题-1-12.png"/>
+       <input class="item-input" placeholder="搜索" focus="{{focus}}" />
+      </view>
+  </view>
+
+<swiper indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-dots="true" autoplay="true">
+  <block  wx:for="{{imgUrls}}">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image" width="355" height="150"/>
+    </swiper-item>
+  </block>
+</swiper>
+
+<view class='schedule-list'>
+      <view class='schedule-date'>
+          <view class='schedule-week'>星期三</view>
+          <text class='schedule-day'>26</text>
+          <view class="schedule-D">DATE</view>      
+     </view>
+     <view class='schedule-date'>
+           <view class='schedule-week'>星期四</view>
+          <text class='schedule-day'>27</text>
+          <view class="schedule-D">DATE</view>
+           <view class='schedule-dateBox'>
+            </view>
+     </view>
+     <view class='schedule-date .schedule-date-H'>
+          <view class='schedule-week'>星期五</view>
+          <text class='schedule-day'>28</text>
+          <view class="schedule-D">DATE</view>
+     </view>
+     <view class='schedule-date .schedule-date-H'>
+           <view class='schedule-week '>星期六</view>
+          <text class='schedule-day'>29</text>
+          <view class="schedule-D">DATE</view>
+     </view>
+     <view class='schedule-date .schedule-date-H'>
+          <view class='schedule-week'>星期天</view>
+          <text class='schedule-day'>30</text>
+          <view class="schedule-D">DATE</view>
+     </view>
+</view>
+<view class="schedule-footer">
+    <view class='list-left'>
+        <view>09:00</view>
+        <view>10:30</view>
+        <view>10:45</view>
+        <view>11:30</view>
+    </view>
+    <view class='list-center'>
+        <view>1</view>
+        <view>2</view>
+        <view>3</view>
+        <view>4</view>
+    </view>
+    <view class='list-right'>
+        <view class='list-content'>5</view>
+        <view class='list-content'>6</view>
+        <view class='list-content'>7</view>
+        <view class='list-content'>8</view>
+    </view>
+</view>

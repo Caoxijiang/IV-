@@ -1,0 +1,49 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+}
+.item-header{
+  width:100%;
+  height:90rpx;
+  background-color:#e9edf0;
+  position: relative;
+}
+.item-search{
+  height:65rpx;
+  width: 528rpx;
+  background: #ffffff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+   
+}
+.item-image{
+  width: 40rpx;
+  height: 40rpx;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 47rpx;
+  margin-bottom: 17rpx;
+}
+.item-input{
+  display: inline-block;
+  font-size: 30rpx;
+  margin-left: 10rpx;
+  line-height: 1;
+}
+swiper{
+ width: 100%;
+ height: 308rpx;
+}
+swiper image{
+  display: block;
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,87 @@
+/* pages/Introduction/Introduction.wxss */
+.introduction-forum{
+   width: 100%;
+}
+.introduction-content{
+  width: 93%;
+  padding: 30rpx;
+  height: 250rpx;
+  overflow: hidden;
+  font-size: 30rpx;
+}
+.introduction-title{
+  font-weight: bolder;
+  border-bottom: 1rpx solid #e9edf0;
+  line-height: 1.7;
+}
+.introduction-img{
+  width: 30rpx;
+  height: 30rpx;
+  padding: 15rpx;
+  vertical-align: middle;
+}
+.introduction-line{
+   line-height: 1.7;
+  border-bottom: 3rpx solid #e9edf0;
+}
+.introduction-moey{
+  color: #69bab3;
+}
+.introduction-body{
+  width: 100%;
+   border-top: 7rpx solid #e9edf0;
+   border-bottom:7px solid #e9edf0; 
+}
+.introduction-msg{
+  padding: 30rpx;
+  width: 93%;
+  height: auto;
+}
+.introduction-bodyTitle{
+  width: 271rpx;
+  height: 16rpx;
+  margin: 0 auto;
+  font-size: 39rpx;
+  line-height: 1;
+ 
+}
+.introduction-bodyTitle image{
+  width: 40rpx;
+  height: 25rpx;
+  margin: 0 2rpx;
+}
+.introduction-bodyContent{
+  font-size: 30rpx;
+}
+
+.introduction-footer{
+  width: 100%;
+  height: 85rpx;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+.introduction-footerL{
+  width: 50%;
+  height: 85rpx;
+  float: left;
+   text-align: center;
+  line-height: 85rpx;
+  background: #ffffff;
+ 
+}
+.introduction-footerR{
+  width: 50%;
+  height: 85rpx;
+  float: left;
+  background: #6caaa7;
+  text-align: center;
+  line-height: 85rpx;
+  color: #ffffff;
+}
+.introduction-footerL image{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 3rpx;
+}

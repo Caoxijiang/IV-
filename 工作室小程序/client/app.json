@@ -2,35 +2,41 @@
   "pages":[
     "pages/login/login",
     "pages/index/index",
+    "pages/home/home",
+    "pages/news/news",
     "pages/user/user",
-    "pages/sms/sms"
+    "pages/sms/sms",
+    "pages/Introduction/Introduction",
+    "pages/Schedule/Schedule"
 
   ],
-  "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#1E90FF",
-    "navigationBarTitleText": "平行会议",
-    "navigationBarTextStyle":"#1E90FF",
-    "enablePullDownRefresh": true
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#0ba29b",
+    "navigationBarTitleText": "IEEE IV 2018",
+    "navigationBarTextStyle": "#ffffff"
   },
-    "tabBar": {
-      "color": "#1E90FF",
-      "selectedColor": "#AB956D",
-      "borderStyle": "#f5f5f5",
-      "backgroundColor": "#f5f5f5",
-      "list": [
-        {
-          "pagePath": "pages/index/index",
-          "iconPath": "images/12.png",
-          "selectedIconPath": "images/11.png",
-          "text": "主页"
-        },
-        {
-          "pagePath": "pages/user/user",
-          "iconPath": "images/42.png",
-          "selectedIconPath": "images/41.png",
-          "text": "我的"
-        }
-      ]
-    }
+  "tabBar": {
+    "selectedColor": "#0ba299",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/index-icon/未标题-1-15.png",
+        "selectedIconPath": "images/index-icon/未标题-1-18.png"
+      },
+      {
+        "pagePath": "pages/news/news",
+        "text": "新闻",
+        "iconPath": "images/index-icon/未标题-1-16.png",
+        "selectedIconPath": "images/index-icon/未标题-1-19.png"
+      },
+      {
+        "pagePath": "pages/home/home",
+        "text": "个人",
+        "iconPath": "images/index-icon/未标题-1-17.png",
+        "selectedIconPath": "images/index-icon/未标题-1-20.png"
+      }
+    ]
+  }
 }

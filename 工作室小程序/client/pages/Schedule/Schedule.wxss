@@ -1,0 +1,71 @@
+/* pages/Schedule/Schedule.wxss */
+.schedule-list{
+  width: 100%;
+  padding: 30rpx;
+  height: 14z0rpx;
+  overflow: hidden
+}
+.schedule-list .schedule-date{
+  float: left;
+  width: 105rpx;
+  height: 105rpx;
+  border-radius: 8rpx;
+  background: #6ec6c7;
+  text-align: center;
+  margin: 17rpx;
+}
+.schedule-list .schedule-date .schedule-week{
+  width: 50rpx;
+  height: 15rpx;
+  margin: 0 auto;
+  font-size: 13rpx;
+  text-align: center;
+  color: #ffffff;
+  line-height: 15rpx;
+  border-top: 2rpx solid #ffffff;
+  border-bottom: 2rpx solid #ffffff;
+  margin-top: 10rpx;
+}
+.schedule-day{
+  font-size: 50rpx;
+   color: #ffffff;
+   line-height: 1;
+   font-weight: bold;
+}
+.schedule-D{
+   color: #ffffff;
+  font-size: 13rpx;
+   line-height: 1;
+}
+.schedule-list .schedule-date-H{
+  background: #3f9b96;
+}
+.schedule-dateBox{
+  width: 105rpx;
+ height: 2rpx;
+  border-bottom: 4px solid #8fc320;
+  border-radius: 8rpx;
+  margin-top: 20rpx;
+}
+.schedule-list{
+  border-bottom: 7rpx solid #e9edf0;
+}
+.schedule-footer{
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  padding: 30rpx;
+}
+.schedule-left{
+  width: 100rpx;
+  height: 500rpx;
+  float: left;
+}
+.schedule-center{
+  width: 40rpx;
+  height: 500rpx;
+  float: left;
+}
+.schedule-righr{
+  float: left;
+}

@@ -1,55 +1,122 @@
-page{ 
- height: 100%; 
-} 
-swiper {
-    height: 421.5rpx;
-}
-swiper-item image {
-    width: 100%;
-    height: 100%;
-}
-.header{
-  border-left-width: 2rpx;
-  border-left-style: solid;
-  border-left-color: limegreen;
-  display: flex;
-  justify-content: space-between;
-  align-content: center;
-}
-
-.text-all{
-  color: green;
-  font-size: 15rpx;
-  padding-right: 1%; 
-}
- .content{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-} 
-.content-item{
-  height: 255rpx;
-  width: 45%;
-  background-color: goldenrod; 
-  margin: 2px;
-  position: relative;
-}
-.content-item image{
-  width: 100%;
-  height: 100%;
-}
-.content-item-text{
-  position: absolute;
-  bottom: 0rpx;
-  font-size: 15rpx;
-  background:-webkit-linear-gradient(bottom，rgba(0,0,0,0.5),rgba(0, 0, 0, 0));
-  height: 125rpx;
-  width: 100%;
+/**index.wxss**/
+.userinfo {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  padding-left: 1%;
-  padding-right: 1%;
-  padding-bottom: 1%;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+.main{
+  height:276rpx;
+  width: 100%;
+  border-top: 1px solid black;
+  overflow: hidden;
+}
+/*.main .main-nav{
+  
+}*/
+.main .main-topNav{
+  width: 100%;
+}
+.main-listT{
+  margin-top: 24rpx;
+  width: 25%;
+  height: 139rpx;
+  float: left;
+  text-align: center;
+}
+.main .main-img{
+   width: 80rpx;
+   height: 80rpx;
+}
+.main text{
+  font-size: 16rpx;
+  display: block;
+  font-weight: bold;
+  line-height: 1;
+}
+.main-listB{
+  margin-top: 0rpx;
+  width: 25%;
+  height: 139rpx;
+  float: left;
+  text-align: center;
+}
+.items-list{
+ width: 100%;
+ overflow: hidden;
+}
+.pro-Recommend{
+  width: 100%;
+  height: 80rpx;
+  background-color: #e9edf0;
+}
+.pro-RecommendTitle{
+  width: 95%;
+  height: 80rpx;
+  margin: 0 auto;
+  line-height: 1.5;
+  position: relative;
+}
+.pro-RecommendTitle::after{
+position: absolute;
+left: 10rpx;
+top: 20rpx;
+content: "";
+width: 12rpx;
+height: 45rpx;
+background: #0ba29b;
+border-radius:4px; 
+}
+.pro-RecommendTxt{
+  margin-left: 35rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;  
+}
+.pro-content{
+  height: 193rpx;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid #e9edf0;
+}
+.pro-item{
+  height: 193rpx;
+  padding: 30rpx;
+}
+.pro-logo{
+  float: left;
+  width: 168rpx;
+  height: 140rpx;
+}
+.pro-body{
+  margin-left: 200rpx;
+}
+.pro-title{
+  font-size: 20rpx;
+  font-weight: bold;
+  line-height: 1;
+}
+.pro-Desc{
+  font-size: 15rpx;
+  line-height: 2;
+  margin-top: 10rpx;
+  color: #c4c4c4;
+}
+.pro-date{
+  margin-top: 10px;
+  font-size: 17rpx;
+  color: #c4c4c4;
 }
