@@ -10,8 +10,8 @@ App({
 
     // 登录
     var self = this;
-    self.login();
-    self.scorp();
+     self.login();
+    // self.scorp();
   },
   globalData: {
     userInfo: {},

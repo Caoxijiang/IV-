@@ -7,6 +7,7 @@ var formidable = require("formidable");
 var secret = require('../conf/secret');
 var url=require('../conf/imageconf').url;
 var meetingeDao=require('../dao/mettinginfoDao');
+var indexDao=require('../dao/indexDao');
 var deleteimages=require('../util/util').delete;
 router.all('/uploadImage', function(req, res) {
         console.log(req.session.userName);
@@ -81,7 +82,7 @@ router.all('/uploadImage', function(req, res) {
             form.encoding = 'utf-8'; 
             form.keepExtensions = true;     //保留后缀
             form.maxFieldsSize = 2 * 1024 * 1024;   //文件大小    
-            form.uploadDir = "./public/images/"; //改变临时目录
+            form.uploadDir = "./public/images/webImage/"; //改变临时目录
             form.parse(req, function(error, fields, files) {
              //  console.log(JSON.stringify(fields));  
                 if(error){
@@ -106,22 +107,20 @@ router.all('/uploadImage', function(req, res) {
                           res.send('uploadIcon img type err');
                        }else{
                            var newName=(new Date()).getTime()+fName;
-                           var uploadDir = "./public/images/" + newName;
+                           var uploadDir = "./public/images/webImage/" + newName;
                            fs.rename(file.path, uploadDir, function(err) {
                                if (err) {
                                    res.end({msg:"图片存入服务器失败"});
                                }else{
-                                   var meetingInfo={};
-                                   meetingInfo.url=url+uploadDir.replace(".","");
-                                   meetingInfo.topic=fields.topic;
-                                   meetingInfo.Summary=fields.Summary;
-                                   meetingInfo.datetimeStart=fields.datetimeStart.toString();
-                                   meetingInfo.admin=req.session.userName;
-                                   meetingeDao.insertmeetingInfo(meetingInfo,function(data){
+                                   var CarouselInfo={};
+                                   CarouselInfo.url=url+uploadDir.replace(".","");
+                                   CarouselInfo.admin=req.session.userName;
+                                   indexDao.admininsertCarouselInfo(CarouselInfo,function(data){
                                         if(data.msg=="SUCCESS"){
-                                            res.send({msg:"会议信息上传成功"}) 
+                                            res.send({msg:"轮播上传成功"}) 
                                         }else{
                                             deleteimages(uploadDir)
+
                                         }
                                    })
 

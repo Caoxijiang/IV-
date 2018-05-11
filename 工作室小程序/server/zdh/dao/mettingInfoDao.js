@@ -66,28 +66,5 @@ module.exports={
                 callback(res);
             })
         });
-    },
-    admininsertCarouselInfo:function(req,res){
-        pool.getConnection(function(err,connection){
-            var data={};
-            async.waterfall([
-                function(callback){
-                    connection.query($sql.selectadminUserid,[req],function(err,results,fields){
-                        if(err)throw err;
-                        data.adminUserid=results[0].user_id;
-                        callback(null,data)
-                    });
-                },function(data,callback){
-                    connection.query($sql,[],function(err,results,fields){
-                        if(err) throw err;
-                        data.msg="SUCCESS";
-                        callback(null,data.msg);
-                    })
-                }
-            ],function(err,res){
-                connection.release();	
-                callback(res);
-            })
-        });
     }
 }

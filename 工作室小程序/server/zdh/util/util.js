@@ -1,7 +1,7 @@
 /**
  * Created by fujunou on 2015/3/6.
  */
-
+var fs=require('fs')
   exports. extend=function(target, source, flag) {
         for(var key in source) {
             if(source.hasOwnProperty(key))

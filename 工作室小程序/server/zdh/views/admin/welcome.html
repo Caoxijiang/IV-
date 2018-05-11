@@ -30,7 +30,7 @@
         </script> -->
 
         <form id="uploadForm"  method="post" enctype="multipart/form-data">
-            <input type="file" id="fileId" name="image" value="请上传图片" />
+            <input type="file" id="fileId" name="image" value="请上传会议图片" />
             <input type="hidden" id="hiddId" name="id" value="1"/>
             <div id="div_username"><input type="text" name="topic" id="topic" class="text_field" placeholder="请输入会议标题"/></div>
             <div id="div_password"><input type="text" name="Summary" id="Summary" class="text_field" placeholder="请输入会议摘要"/></div> 
@@ -53,11 +53,24 @@
            </script>
         </form>
         <script type="text/javascript" src="../../public/js/selectmeetinfoList.js"></script>
+        <script type="text/javascript" src="../../public/js/carousel.js"></script>
         <div>
             <input type="button" id="test1" value="查询会议信息"/>
-          
         </div>
-
+        <div>
+                <form id="uploadForms"  method="post" enctype="multipart/form-data">
+                    <input type="file" id="fileIds" name="image2" value="上传轮播"/>
+                    <input type="button" id="submits" value="上传"/>
+                </form>
+        </div>
+        <div>
+            <input type="text" name="topic" id="Introductiontopic" class="text_field" placeholder="请输入大会简介标题"/>
+            <input type="text" name="topic" id="Introductiontime" class="text_field" placeholder="请输入大会简介时间"/>
+            <input type="text" name="topic" id="Introductionaddress" class="text_field" placeholder="请输入大会简介地点"/>
+            <input type="text" name="topic" id="Introductionmoney" class="text_field" placeholder="请输入大会费用"/>
+            <input type="text" name="topic" id="Introduction" class="text_field" placeholder="请输入大会介绍"/>
+            <input type="button" id="submit2" value="上传"/>
+        </div>
 
 </body>
 {% endblock %}

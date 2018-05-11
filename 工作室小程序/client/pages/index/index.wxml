@@ -11,17 +11,19 @@
 
 <swiper indicator-dots="{{indicatorDots}}"
   autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-dots="true" autoplay="true">
-  <block  wx:for="{{imgUrls}}">
+  <block  wx:for="{{imgUrls}}" wx:key="{{index}}">
     <swiper-item>
-      <image src="{{item}}" class="slide-image" width="355" height="150"/>
+      <image src="{{item.carousel_url}}" class="slide-image" width="355" height="150"/>
     </swiper-item>
   </block>
 </swiper>
 <view class="main">
    <view class="main-nav">
        <view class="main-topNav" >
-         <view class="main-listT" bindtap='toDetail' data-index='{{inidex}}'>
+         <view class="main-listT"  data-index='{{inidex}}'>
+          <navigator url="../Introduction/Introduction">
             <image class="main-img"   src="./../../images/index-icon/1-03.png"></image>
+          </navigator>
             <text>大会简介</text>
          </view>
          <view class="main-listT" bindtap='toDetail' data-index='{{inidex}}'>
@@ -73,7 +75,7 @@
     </view>
    </view>
    <!--2-->
-    <!-- <view class='pro-content' bindtap='toDetail' data-index='{{inidex}}'>
+    <!-- <view class='pro-content' bindtap='toDetail' data-index='{{inidex}}'>   
          <view class='pro-item'>
     <image class='pro-logo' src='./../../images/index-icon/1-03.png'></image>
     <view class='pro-body'>
