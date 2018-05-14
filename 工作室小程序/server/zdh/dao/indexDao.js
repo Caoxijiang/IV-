@@ -2,6 +2,7 @@ var mysql = require('mysql');
 var $conf = require('../conf/db');
 var $util = require('../util/util');
 var $sql = require('./indexSqlMapping');
+var $sql2 = require('./mettingInfoMapping');
 var async = require('async');
 var pool  = mysql.createPool($util.extend({},$conf.mysql));
 module.exports={
@@ -10,7 +11,7 @@ module.exports={
             var data={};
             async.waterfall([
                 function(callback){
-                    connection.query($sql.selectadminUserid,[req.admin],function(err,results,fields){
+                    connection.query($sql2.selectadminUserid,[req.admin],function(err,results,fields){
                         if(err)throw err;
                         data.adminUserid=results[0].user_id;
                         callback(null,data)

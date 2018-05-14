@@ -23,15 +23,20 @@ Page({
       },
       success:function(res){
         console.log(res.data)
-        if (res.data.status_err == "err") {
+        if (res.data == "err") {
           wx.showModal({
             title: '提示',
             content: '登陆过期',
             complete: function () {
-              //app.login();
+              wx.redirectTo({
+                url: '/pages/login/login',
+                success: function () {
+                  app.login();
+                }
+              })
             }
           })
-        } else if (res.data.status_err == "SERVERERR") {
+        } else if (res.data == "SERVERERR") {
           wx.showModal({
             title: '提示',
             content: "服务器错误",
@@ -60,15 +65,20 @@ Page({
       },
       success: function (res) {
         console.log(res.data);
-        if (res.data.status_err == "err") {
+        if (res.data == "err") {
           wx.showModal({
             title: '提示',
             content: '登陆过期',
             complete: function () {
-              //app.login();
+              wx.redirectTo({
+                url: '/pages/login/login',
+                success: function () {
+                  app.login();
+                }
+              })
             }
           })
-        } else if (res.data.status_err == "SERVERERR") {
+        } else if (res.data == "SERVERERR") {
           wx.showModal({
             title: '提示',
             content: "服务器错误",

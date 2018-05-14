@@ -11,11 +11,12 @@ var index = require('./routes/index');
 var sms = require('./routes/sms');
 var weixin= require('./routes/weixin');
 var wx_Pay=require('./routes/wxPay');
-var orders=require('./routes/orders');
 var imageserver=require('./imageserver/imageserver');
 var image=require('./routes/image');
-var adminligin=require('./routes/adminlogin');
+var adminlogin=require('./routes/adminlogin');
 var adminmetting=require('./routes/adminmeetingList')
+var adminIntroductionInfo=require('./routes/adminIntroductionInfo');
+var Introduction=require('./routes/Introduction');
 var redis = require('redis');
 var session = require('express-session');
 var RedisStore = require('connect-redis')(session);
@@ -68,16 +69,16 @@ app.use('/public', express.static('public'));
 
 
 
-app.use('/',adminligin);
+app.use('/',adminlogin);
 app.use('/index', index);
 app.use('/sms', sms);
 app.use('/weixin',weixin);
 app.use('/wxPay',wx_Pay);
-app.use('/orders',orders);
 //app.use("./imageserver/imageserver",imageserver);
 app.use('/image',image);
 app.use('/adminmetting',adminmetting)
-
+app.use('/adminIntroductionInfo',adminIntroductionInfo)
+app.use('/Introduction',Introduction);
 //app.use('/redis',redis);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

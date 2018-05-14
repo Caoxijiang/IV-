@@ -9,8 +9,11 @@ App({
     // wx.setStorageSync('logs', logs)
 
     // 登录
+
+  },
+  onShow:function(){
     var self = this;
-     self.login();
+    self.login();
     // self.scorp();
   },
   globalData: {

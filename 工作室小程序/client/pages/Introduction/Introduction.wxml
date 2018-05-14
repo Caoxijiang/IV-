@@ -18,12 +18,12 @@
 </swiper>
 <view class="introduction-forum">
   <view class="introduction-content">
-      <view class='introduction-title introduction-line'>2018动漫高峰论坛</view>
+      <view class='introduction-title introduction-line'>{{IntroductionInfo[0].topic}}</view>
       <view class='introduction-line'>
-      <image class='introduction-img' src='/../../images/introduction-icon/2-04.png'></image>2018.06/26 08:00-2016.06/29 18:00
+      <image class='introduction-img' src='/../../images/introduction-icon/2-04.png'></image>{{IntroductionInfo[0].time}}
       </view>
-     <view class='introduction-line'><image class='introduction-img' src='/../../images/introduction-icon/2-05.png'></image>常熟虞山镇黄河路288号常熟国际饭店</view>
-      <view class='introduction-moey introduction-line'><image class='introduction-img' src='/../../images/introduction-icon/2-06.png'></image>600起</view>
+     <view class='introduction-line'><image class='introduction-img' src='/../../images/introduction-icon/2-05.png'></image>{{IntroductionInfo[0].address}}</view>
+      <view class='introduction-moey introduction-line'><image class='introduction-img' src='/../../images/introduction-icon/2-06.png'></image>{{IntroductionInfo[0].money}}起</view>
   </view>
 </view>
 <view class='introduction-body'>
@@ -35,7 +35,7 @@
       </view>
       <view class='introduction-bodyContent'>
             <text>
-             由IEEE智能交通系统协会（ITSS）主办的第29届国际智能车大会（IEEE IV 2018）将于2018年6月26日在中国常熟开幕。IEEE intelligent Vehicle Symposium(IEEE国际智能车大会）是IEEE智能交通协会举办的两大年度旗舰会议之一，旨在为全球该领域相关的研究人员,工程师，学着提供当今最先进技术的交流研讨机会。\n
+{{IntroductionInfo[0].Introduction}}\n
             </text>
       </view>
    </view>

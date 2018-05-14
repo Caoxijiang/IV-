@@ -6,8 +6,6 @@ var cryptoMO = require('crypto'); // MD5算法
 var parseString = require('xml2js').parseString; // xml转js对象
 var router = express.Router();
 var request = require('request');
-// var userInfo=require('../dao/userDao');
-var ordersInfo=require('../dao/ordersDao');
 var time=require('../util/TimeUtil');
 var key = wxConfig.Mch_key;
 /*
@@ -15,15 +13,6 @@ var key = wxConfig.Mch_key;
  */
 router.all('/wx_pay', function(req, res, next) {
     var param = req.query || req.params; 
-
-    if(param.out_trade_no){
-        var oldout_trade_no=param.out_trade_no;
-        ordersInfo.deleteoldOrderAccount(oldout_trade_no,function(msg){
-            console.log(msg.delMsg);
-        })
-    }else{
-        var out_trade_no = wxConfig.getWxPayOrdrID();
-    }
     var token= req.query.openid;
     console.log("session_token:"+token)
     client.get(token,function(err,value){
@@ -36,7 +25,7 @@ router.all('/wx_pay', function(req, res, next) {
             console.log("openid:"+openid)
         } 
          var body = param.title; // 商品描述
-        //  var out_trade_no = wxConfig.getWxPayOrdrID(); // 商户订单号
+         var out_trade_no = wxConfig.getWxPayOrdrID(); // 商户订单号
          var total_fee = param.total*100; // 订单价格 单位是 分
          var timestamp = Math.round(new Date().getTime()/1000); // 当前时间
          var orderinfo={};
@@ -86,8 +75,6 @@ router.all('/wx_pay', function(req, res, next) {
                      var returnValue = {};
                      parseString(body, function (err, result) {
                          if (result.xml.return_code[0] == 'SUCCESS') {
-                            ordersInfo.insertOrdersByuserId(orderinfo,function(data){
-                             console.log("order"+JSON.stringify(data));
                              returnValue.msg = '操作成功';
                              returnValue.status = '100';
                              returnValue.out_trade_no = out_trade_no;  // 商户订单号
@@ -98,7 +85,6 @@ router.all('/wx_pay', function(req, res, next) {
                              returnValue.paySign = paysignjs(wxConfig.AppID, returnValue.nonceStr, returnValue.package, 'MD5',timestamp); // 签名
                            //  ordersInfo.insertOrdersByuserId(user_id,)
                              res.end(JSON.stringify(returnValue));
-                            });
                          } else{
                              returnValue.msg = result.xml.return_msg[0];
                              returnValue.tokenaging=session_token;
