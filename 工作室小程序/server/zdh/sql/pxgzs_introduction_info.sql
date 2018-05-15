@@ -16,30 +16,31 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `user_phoneinfo`
+-- Table structure for table `introduction_info`
 --
 
-DROP TABLE IF EXISTS `user_phoneinfo`;
+DROP TABLE IF EXISTS `introduction_info`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `user_phoneinfo` (
+CREATE TABLE `introduction_info` (
   `user_id` int(10) NOT NULL,
-  `user_phonecountry` varchar(15) DEFAULT NULL,
-  `user_phoneprovince` varchar(15) DEFAULT NULL,
-  `user_phonecity` varchar(15) DEFAULT NULL,
-  `user_phonegender` int(10) DEFAULT NULL,
+  `topic` varchar(30) DEFAULT NULL,
+  `time` varchar(30) DEFAULT NULL,
+  `address` varchar(30) DEFAULT NULL,
+  `money` double(30,2) DEFAULT NULL,
+  `Introduction` text,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user_phoneinfo`
+-- Dumping data for table `introduction_info`
 --
 
-LOCK TABLES `user_phoneinfo` WRITE;
-/*!40000 ALTER TABLE `user_phoneinfo` DISABLE KEYS */;
-INSERT INTO `user_phoneinfo` VALUES (7,NULL,NULL,NULL,NULL),(8,NULL,NULL,NULL,NULL),(9,NULL,NULL,NULL,NULL),(10,NULL,NULL,NULL,NULL),(11,NULL,NULL,NULL,NULL),(12,NULL,NULL,NULL,NULL);
-/*!40000 ALTER TABLE `user_phoneinfo` ENABLE KEYS */;
+LOCK TABLES `introduction_info` WRITE;
+/*!40000 ALTER TABLE `introduction_info` DISABLE KEYS */;
+INSERT INTO `introduction_info` VALUES (1,'IV 2018 智能车峰会','2018-05-15','江苏常熟',600.00,'啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦');
+/*!40000 ALTER TABLE `introduction_info` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-15 13:50:06
+-- Dump completed on 2018-05-15 13:50:07

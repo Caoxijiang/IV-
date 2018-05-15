@@ -1,2 +1,19 @@
 <!--pages/news/news.wxml-->
-<text>pages/news/news.wxml</text>
+<swiper indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-dots="true" autoplay="true">
+  <block>
+    <swiper-item>
+      <image src="{{imgUrlss}}" class="slide-image" width="355" height="150"/>
+    </swiper-item>
+  </block>
+</swiper>>
+   <view class='pro-content' bindtap='toDetail'wx:for="{{metingInfo}}" wx:key="index">
+         <view class='pro-item'>
+    <image class='pro-logo' src='{{metingInfo[index].metting_imageUrl}}'></image>
+    <view class='pro-body'>
+       <view class='pro-title'>{{metingInfo[index].metting_topic}}</view>
+        <view class="pro-Desc">{{metingInfo[index].metting_Summary}}</view> 
+       <view class='pro-date'>{{metingInfo[index].metting_startTime}}</view>
+     </view>
+    </view>
+   </view> 

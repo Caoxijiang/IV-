@@ -45,6 +45,11 @@ Page({
           self.setData({
             imgUrls: res.data
           })
+          wx.setStorage({
+            key: "imgUrls",
+            data: res.data[0]
+          })
+
         }
       },fail:function(res){
         console.log(res)
@@ -87,6 +92,13 @@ Page({
           self.setData({
             metingInfo: res.data
           })
+
+          wx.setStorage({
+            key: "metingInfo",
+            data:res.data
+          })
+
+
         }
       }, fail: function (res) {
         console.log(res)
