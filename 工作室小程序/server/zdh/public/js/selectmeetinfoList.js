@@ -6,7 +6,7 @@ $().ready(function(){
             type: "get",
             success:function(data){
                 if(data){
-                    alert(data)
+                    $("#select").html(JSON.stringify(data))
                 }else{
                     console("123131321");
                 }

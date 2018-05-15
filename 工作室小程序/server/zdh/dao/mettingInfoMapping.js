@@ -4,5 +4,6 @@ var meetingInfo={
     insertmeetingImageinfo:"insert into meeting_imageinfo(metting_id,images_url) values(?,?);",
     selectmeetingId:"select metting_id from meeting_info where user_id=?",
     selectAllmeetingList:"select * from meeting_info where user_id=?",
+    dellmeetingList:"delete from meeting_info where metting_topic=?",
 }   
 module.exports=meetingInfo;

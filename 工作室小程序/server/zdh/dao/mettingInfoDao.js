@@ -66,5 +66,14 @@ module.exports={
                 callback(res);
             })
         });
+    },
+    dellmeetingList:function(req,callback){
+        pool.getConnection(function(err,connection){
+            connection.query($sql.dellmeetingList,[req],function(err,results,fields){
+                if(err) throw err;
+                var msg="DELLSUCCESS"
+                callback(msg)
+            })
+        });
     }
 }

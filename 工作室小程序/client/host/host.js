@@ -1,3 +1,3 @@
 module.exports = {
-  SERVER_URL: "https://192.168.3.117:3006"
+  SERVER_URL: "https://www.iv2018.cn"
 }

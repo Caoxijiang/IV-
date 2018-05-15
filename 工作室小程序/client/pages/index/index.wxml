@@ -37,8 +37,10 @@
             <text>参会注册</text>
          </view>
          <view class="main-listT" bindtap='toDetail' data-index='{{inidex}}'>
+         <navigator url="../Introduction/Introduction">
             <image class="main-img"  src="./../../images/index-icon/1-03.png"></image>
             <text>大会新闻</text>
+            </navigator>
          </view>
     </view>
     <view class="main-bottomNav">

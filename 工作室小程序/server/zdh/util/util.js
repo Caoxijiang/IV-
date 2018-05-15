@@ -15,14 +15,26 @@ var fs=require('fs')
 
 
 
-    exports.delete=function(req,res){//删除图片  
+    exports.delete=function(req,callback){//删除图片  
         if(req){
-            var fileName=req;  
-            fs.unlink("./public/images/"+fileName);  
-            res.send({msg:"失败"})  
-            res.redirect('/');  
+            var fileName=req.slice(41,58);
+            console.log(fileName)
+            var filepath="./public/images/"+fileName;
+
+            //fs.unlink("./public/images/"+fileName);    
+            fs.unlink(filepath, function(err) {
+                if (err) {
+                    var msg="未找到删除图片";
+                   callback(msg)
+                }else{
+                    var msg="SUCCESS";
+                    callback(msg)
+                }
+             });
+  
         }else{
-            res.send({msg:"未找到删除图片信息"})
+            var msg="未找到删除图片信息";
+            callback(msg) ;
         }
 
     };  
