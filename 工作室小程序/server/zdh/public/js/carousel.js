@@ -20,6 +20,39 @@ $().ready(function(){
                 }
             }
 
-        })
+        })  
+    });
+
+    $("#dellsubmits").click(function(){
+        var carouselid=6;
+      $.ajax({
+          url:"/admincarousel/dellcarousel",
+          data:{
+            carouselid:carouselid
+          },
+          success:function(data){
+            if(data){
+                alert(data)
+            }
+
+          }
+      })   
     })
+
+    $("#selectsubmits").click(function(){
+        $.ajax({
+            url:"/admincarousel/selectcarousel",
+            success:function(data){
+                if(data.msg){
+                    
+                    alert(data)
+                }else{
+                    console.log(JSON.stringify(data))
+                }
+            }
+        })
+   })
+
+
+
 })

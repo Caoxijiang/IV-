@@ -42,7 +42,30 @@ module.exports={
                  connection.release();	
                     callback(res);
                 })
+            })     
+    },
+    dellCarouseById:function(req,callback){
+        pool.getConnection(function(err,connection){
+            var data={};
+            async.waterfall([
+                function(callback){
+                    connection.query($sql.selectCarouseInfobyid,[req],function(err,results,fields){
+                        if(err) throw err;
+                         data.url=results[0].carousel_url;
+                         callback(null,data)
+                    })
+                },function(data,callback){
+                    connection.query($sql.deleteCarouseInfo,[data.url],function(err,results,fields){
+                        if(err) throw err;
+                        data.msg="SUCCESS"
+                        callback(null,data)
+                    })
+                }
+            ],function(err,res){
+                connection.release();	
+                callback(res);
             })
-       
+        })
     }
 }
+

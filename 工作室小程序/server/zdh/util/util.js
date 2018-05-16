@@ -17,12 +17,8 @@ var fs=require('fs')
 
     exports.delete=function(req,callback){//删除图片  
         if(req){
-            var fileName=req.slice(41,58);
-            console.log(fileName)
-            var filepath="./public/images/"+fileName;
-
             //fs.unlink("./public/images/"+fileName);    
-            fs.unlink(filepath, function(err) {
+            fs.unlink(req, function(err) {
                 if (err) {
                     var msg="未找到删除图片";
                    callback(msg)

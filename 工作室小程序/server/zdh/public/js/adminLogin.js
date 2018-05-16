@@ -30,8 +30,8 @@ function keyLogin(event) {
             
             console.log(pwd)
             $.post(url,{ sync:false,
-                username:username,
-                pwd:pwd 
+                username:"admin",
+                pwd:"admin" 
             },
            
             function(callbackData){

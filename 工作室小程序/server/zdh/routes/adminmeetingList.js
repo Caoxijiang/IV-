@@ -29,7 +29,11 @@ router.all('/dellmeetingList',function(req,res){
             if(result="DELLSUCCESS"){
                 //deleteimages(Meturl)
                 //res.send(deleteimages(Meturl))
-                deleteimages(Meturl,function(data){
+                var fileName=Meturl.slice(41,58);
+                console.log(fileName)
+                var filepath="./public/images/"+fileName;
+    
+                deleteimages(filepath,function(data){
                     if(data){
                         res.send(data);
                     }

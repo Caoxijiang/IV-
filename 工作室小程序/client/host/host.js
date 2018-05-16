@@ -1,3 +1,3 @@
 module.exports = {
-  SERVER_URL: "https://www.iv2018.cn"
+  SERVER_URL: "https://localhost:3006"
 }

@@ -17,6 +17,7 @@ var adminlogin=require('./routes/adminlogin');
 var adminmetting=require('./routes/adminmeetingList')
 var adminIntroductionInfo=require('./routes/adminIntroductionInfo');
 var Introduction=require('./routes/Introduction');
+var admincarousel=require('./routes/admincarousel');
 var redis = require('redis');
 var session = require('express-session');
 var RedisStore = require('connect-redis')(session);
@@ -79,6 +80,7 @@ app.use('/image',image);
 app.use('/adminmetting',adminmetting)
 app.use('/adminIntroductionInfo',adminIntroductionInfo)
 app.use('/Introduction',Introduction);
+app.use('/admincarousel',admincarousel);
 //app.use('/redis',redis);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
