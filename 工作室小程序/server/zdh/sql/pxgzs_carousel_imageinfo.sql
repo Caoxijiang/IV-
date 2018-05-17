@@ -27,7 +27,7 @@ CREATE TABLE `carousel_imageinfo` (
   `carousel_id` int(10) NOT NULL AUTO_INCREMENT,
   `carousel_url` varchar(100) NOT NULL,
   PRIMARY KEY (`carousel_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,7 +36,7 @@ CREATE TABLE `carousel_imageinfo` (
 
 LOCK TABLES `carousel_imageinfo` WRITE;
 /*!40000 ALTER TABLE `carousel_imageinfo` DISABLE KEYS */;
-INSERT INTO `carousel_imageinfo` VALUES (1,1,'https://192.168.3.117:3006/public/images/webImage/1526005186298.jpg'),(1,2,'https://192.168.3.117:3006/public/images/webImage/1526005336689.jpg'),(1,3,'https://192.168.3.117:3006/public/images/webImage/1526005344212.jpg');
+INSERT INTO `carousel_imageinfo` VALUES (1,1,'https://192.168.3.117:3006/public/images/webImage/1526541120226.png');
 /*!40000 ALTER TABLE `carousel_imageinfo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-15 13:50:06
+-- Dump completed on 2018-05-17 19:49:00

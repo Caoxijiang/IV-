@@ -30,7 +30,7 @@ CREATE TABLE `meeting_info` (
   `metting_imageUrl` varchar(100) NOT NULL,
   `metting_startTime` varchar(100) NOT NULL,
   PRIMARY KEY (`metting_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `meeting_info` (
 
 LOCK TABLES `meeting_info` WRITE;
 /*!40000 ALTER TABLE `meeting_info` DISABLE KEYS */;
-INSERT INTO `meeting_info` VALUES (1,10,'IV 2018智能车峰会','啦啦啦啦啦啦啦啦啦啦','https://192.168.3.117:3006/public/images/1525935322148.jpg','2018-05-10'),(1,11,'fds','fds','http://192.168.4.86:3006/public/images/1526022128098.jpg','2018-05-11');
+INSERT INTO `meeting_info` VALUES (1,11,'fds','fds','http://192.168.4.86:3006/public/images/1526022128098.jpg','1'),(1,12,'ss','ss','https://192.168.3.117:3006/public/images/1526541504093.jpg','2018-05-17');
 /*!40000 ALTER TABLE `meeting_info` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-15 13:50:07
+-- Dump completed on 2018-05-17 19:49:02

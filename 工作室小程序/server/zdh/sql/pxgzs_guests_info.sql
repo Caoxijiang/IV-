@@ -16,31 +16,31 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `introduction_info`
+-- Table structure for table `guests_info`
 --
 
-DROP TABLE IF EXISTS `introduction_info`;
+DROP TABLE IF EXISTS `guests_info`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `introduction_info` (
-  `user_id` int(10) NOT NULL,
-  `topic` varchar(30) DEFAULT NULL,
-  `time` varchar(30) DEFAULT NULL,
-  `address` varchar(30) DEFAULT NULL,
-  `money` double(30,2) DEFAULT NULL,
-  `Introduction` text,
-  PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `guests_info` (
+  `user_id` int(10) DEFAULT NULL,
+  `guests_id` int(10) NOT NULL AUTO_INCREMENT,
+  `guests_url` varchar(100) NOT NULL,
+  `guests_name` varchar(30) NOT NULL,
+  `guests_job` varchar(30) NOT NULL,
+  `guests_status` varchar(10) NOT NULL,
+  PRIMARY KEY (`guests_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `introduction_info`
+-- Dumping data for table `guests_info`
 --
 
-LOCK TABLES `introduction_info` WRITE;
-/*!40000 ALTER TABLE `introduction_info` DISABLE KEYS */;
-INSERT INTO `introduction_info` VALUES (1,'IV 2018 智能车峰会','2018-05-15','江苏常熟',600.00,'啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦');
-/*!40000 ALTER TABLE `introduction_info` ENABLE KEYS */;
+LOCK TABLES `guests_info` WRITE;
+/*!40000 ALTER TABLE `guests_info` DISABLE KEYS */;
+INSERT INTO `guests_info` VALUES (1,6,'https://192.168.3.117:3006/public/images/guestsImage/1526551519856.jpg','asa','as','asa');
+/*!40000 ALTER TABLE `guests_info` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-17 19:49:02
+-- Dump completed on 2018-05-17 19:49:01
