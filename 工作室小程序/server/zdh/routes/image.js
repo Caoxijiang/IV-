@@ -8,6 +8,7 @@ var secret = require('../conf/secret');
 var url=require('../conf/imageconf').url;
 var meetingeDao=require('../dao/mettinginfoDao');
 var indexDao=require('../dao/indexDao');
+var guestsDao=require('../dao/guestsDao');
 var deleteimages=require('../util/util').delete;
 router.all('/uploadImage', function(req, res) {
         console.log(req.session.userName);
@@ -136,7 +137,70 @@ router.all('/uploadImage', function(req, res) {
      });
 
 
+     router.all('/guestsInfo', function(req, res) {
+        console.log(req.session.userName);
+        if(req.originalUrl != "/" && !req.session.userName){
+            res.redirect("/");
+        }else{
+            var form = new formidable.IncomingForm();
+            form.encoding = 'utf-8'; 
+            form.keepExtensions = true;     //保留后缀
+            form.maxFieldsSize = 2 * 1024 * 1024;   //文件大小    
+            form.uploadDir = "./public/images/webImage/"; //改变临时目录
+            form.parse(req, function(error, fields, files) {
+             //  console.log(JSON.stringify(fields));  
+                if(error){
+                   res.send("失败");
+                }else{
+                   for (var key in files) {
+                       var file = files[key];
+                       var fName = "";
+                       switch (file.type) {
+                           case "image/jpeg":
+                               fName = fName + ".jpg";
+                               break;
+                           case "image/png": 
+                               fName = fName + ".png";
+                               break;
+                           default:
+                               fName = fName + ".png";
+                               break;
+                       }
+                      //  console.log(file, file.size);
+                       if(fName.length==0){
+                          res.send('uploadIcon img type err');
+                       }else{
+                           var newName=(new Date()).getTime()+fName;
+                           var uploadDir = "./public/images/guestsImage/" + newName;
+                           fs.rename(file.path, uploadDir, function(err) {
+                               if (err) {
+                                   res.end({msg:"图片存入服务器失败"});
+                               }else{
+                                   var guestsInfo={};
+                                   guestsInfo.url=url+uploadDir.replace(".","");
+                                   guestsInfo.admin=req.session.userName;
+                                   guestsInfo.name=fields.name;
+                                   guestsInfo.job=fields.job;
+                                   guestsInfo.status=fields.status;
+                                   guestsDao.addguestsInfo(guestsInfo,function(data){
+                                        if(data.msg=="SUCCESS"){
+                                            res.send({msg:"嘉宾信息上传成功"}) 
+                                        }else{
+                                            deleteimages(uploadDir)
 
+                                        }
+                                   })
+
+                            }
+                       })
+           
+                   }
+                }
+               }
+            });
+        } 
+
+     });
 
 
 module.exports = router;

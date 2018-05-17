@@ -21,8 +21,26 @@ router.get("/add",function(req,res){
 
 })
 
-
-
+//
+router.get("/dell",function(req,res){
+    // console.log(req)
+     if(req.originalUrl != "/" && !req.session.userName){
+         res.redirect("/");
+     }else{
+          var topic=req.query.topic;
+         // var admin=req.session.userName;
+         // IntroductionInfo.admin=admin;
+          IntroductionDao.deleteInfo(topic,function(result){
+            if(result=="DELLSUCCESS"){
+                res.send({msg:"删除成功"})
+            }else{
+                res.send({msg:"删除失败"})
+            }
+          })
+     }
+ 
+ 
+ })
 
 
 

@@ -54,5 +54,14 @@ module.exports = {
                 callback(res);
             })
         });
+    },
+    deleteInfo:function(req,callback){
+        pool.getConnection(function(err,connection){
+            connection.query($sql.delete,[req],function(err,results,fields){
+                if(err) throw err;
+                var msg="DELLSUCCESS";
+                callback(msg);
+            })
+        });
     }
 }

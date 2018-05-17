@@ -56,6 +56,7 @@
         <script type="text/javascript" src="../../public/js/carousel.js"></script>
         <script src="../../public/js/Introduction.js"></script>
         <script src="../../public/js/deletemeeting.js"></script>
+        <script src="../../public/js/guests.js"></script>
         <div>
             <input type="button" id="test1" value="查询会议信息"/>
         </div>
@@ -83,6 +84,19 @@
         </div>
         <div>
                 <input type="button" id="delete" value="DELETE Click Me"/>
+        </div>
+
+
+        <div>
+            <form id="GuestsuploadForm"  method="post" enctype="multipart/form-data">
+                <input type="file" id="fileIdss" name="image3" value="上传嘉宾图片"/>
+                <input type="text" name="name" id="name" class="text_field" placeholder="姓名"/>
+                <input type="text" name="job" id="job" class="text_field" placeholder="职务"/>
+                <input type="text" name="status" id="status" class="text_field" placeholder="状态"/>
+                <input type="button" id="submit3" value="上传"/>
+                <input type="button" id="selectguests" value="查询"/>
+                
+            </form>
         </div>
 
 </body>

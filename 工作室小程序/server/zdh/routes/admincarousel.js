@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var indexDao=require('../dao/indexDao')
+
 var deleteimages=require('../util/util').delete;
 router.all('/selectcarousel',function(req,res){
     if(req.originalUrl != "/" && !req.session.userName){
@@ -29,7 +30,7 @@ router.all("/dellcarousel",function(req,res){
             if(data.msg){
                 var urls=data.url;
 
-                var fileName=urls.slice(50,67);
+                var fileName=urls.slice(50,70);
                 var filepath="./public/images/webImage/"+fileName;
                 console.log(filepath)
                 deleteimages(filepath,function(data){
