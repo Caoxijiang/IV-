@@ -59,25 +59,61 @@ page{
  margin-top: 1px; 
 } 
 /*按钮*/
-.loginBtnView { 
- width: 100%; 
- height: auto; 
- background-color: #f2f2f2; 
- margin-top: 0px; 
- margin-bottom: 0px; 
- padding-bottom: 0px; 
-} 
   
 .phoneloginBtn { 
  width: 80%; 
- margin-top: 35px; 
+ margin-top: 35px;
+ background-color: #00a29a;
+ height: 100rpx;
+ line-height: 100rpx;
+ color: #fff;
+ border-radius: 50rpx; 
 }
 
 .weixinloginBtn { 
  width: 80%; 
- margin-top: 35px; 
+ margin-top: 35px;
+ background-color: #ebf0f3;
+ height: 100rpx;
+ line-height: 100rpx;
+ color: #00a29a;
+ border-radius: 50rpx;
+ border: 1px solid #00a29a;
 }
 
 .registered{
   margin-left: 235px; 
 }
+.bg{
+  width: 100%;
+  height: 430rpx;
+  background-color:#00a29a;
+  padding-top: 100rpx;
+  display: block;
+}
+.imgBox{
+  margin: 0px auto;
+  width: 250rpx;
+  height: 250rpx;
+  border-radius: 50%;
+  border: 4px solid #ebf0f3;
+}
+.smsImage{
+  width: 100%;
+}
+.sendMsg {
+  font-size: 12;
+  margin-right: 0;
+  padding: 0;
+  height: inherit;
+  width: 80rpx;
+}
+.submi{
+  margin: 0px auto;
+  height: 80rpx;
+  width: 80%;
+  border-radius: 40rpx 40rpx;
+  background-color: #00a29a;
+  color: #fff;
+}
+

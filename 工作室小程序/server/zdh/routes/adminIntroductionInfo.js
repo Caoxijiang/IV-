@@ -21,6 +21,22 @@ router.get("/add",function(req,res){
 
 })
 
+//获取大会简介
+router.all("/select",function(req,res){
+    if(req.originalUrl != "/" && !req.session.userName){
+        res.redirect("/");
+    }else{
+        var admin=req.session.userName;
+        IntroductionDao.selectInfo(admin,function(data){          
+            if(data){
+                res.send(data)
+            }else{
+                res.send({msg:"获取简介失败"})
+            }
+        })
+    }
+});
+
 //
 router.get("/dell",function(req,res){
     // console.log(req)

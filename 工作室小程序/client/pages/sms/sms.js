@@ -11,6 +11,11 @@ Page({
     phoneNumber: '',
     code: '',
   },
+  back: function () {
+    wx.navigateTo({
+      url: '../login/login',
+    })
+  },
 
   // 手机号部分
   inputPhoneNum: function (e) {
