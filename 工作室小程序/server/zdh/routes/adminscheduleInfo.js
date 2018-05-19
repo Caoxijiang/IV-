@@ -22,10 +22,103 @@ router.all("/addschedule",function(req,res){
 
 
 
+router.all("/selectschedule",function(req,res){
+    if(req.originalUrl != "/" && !req.session.userName){
+        res.redirect("/");
+    }else{
+       // var admin=req.session.userName;
+       var ID=29
+       scheduleDao.select2(ID,function(data){
+        if(data){
+            var tid=data.schedule_time_id;
+
+            var daninfo=[];
+            for( var obj of tid){
+                scheduleDao.select3(obj.schedule_time_id,function(res2){
+                    if(res2){
+                        daninfo.push(res2);
+                        if(daninfo.length==tid.length){
+                            res.json(daninfo)
+                        }
+                    }
+                })
+            }
+            // var tid=data.schedule_time_id;
+            
+            console.log(daninfo)
+        }else{
+            res.end({msg:"查询失败"})
+        }
+       })
+
+    }
+}) 
 
 
 
+router.all("/dellschedule",function(req,res){
+    if(req.originalUrl != "/" && !req.session.userName){
+        res.redirect("/");
+    }else{
+       // var admin=req.session.userName;
+       var ID=29
+       scheduleDao.select2(ID,function(data){
+        if(data){
+            var tid=data.schedule_time_id;
+            var msg=[];
+            for( var obj of tid){
+                scheduleDao.dellAlltimeinfoBytimeid(obj.schedule_time_id,function(res2){
+                    if(res2=="dellsuccess"){
+                        scheduleDao.deleteallschedule(ID,function(res3){
+                            if(res3.mgs1=="SUCCESS" && res3.msg2=="SUCCESS"){
+                                msg.push(res3)
+                                if(msg.length==tid.length){
+                                    res.send({msg:"success"})
+                                }
+                                
+                            }
+                        })
+                    }
+                })
+            }
+            // if(ree.ree=="dellsuccess"){
+            //     scheduleDao.deleteallschedule(Id,function(res3){
+            //         if(res3.msg1=="SUCCESS" && res3.msg1=="SUCCESS" ){
+                    
+            //         }
+            //     })
+            // }
+            // var tid=data.schedule_time_id;
+            
+           // console.log(daninfo)
+        }else{
+            res.end({msg:"err"})
+        }
+       })
 
+    }
+})
+
+
+router.all("/delltimeId",function(req,res){
+    if(req.originalUrl != "/" && !req.session.userName){
+        res.redirect("/");
+    }else{
+        var ID=56;
+        scheduleDao.dellAlltimeinfoBytimeid(ID,function(data){
+            if(data=="dellsuccess"){
+                scheduleDao.delltimeInfoBytid(ID,function(data2){
+                    if(data2=="DELLSUCCESS"){
+                         res.send({msg:"SUCCESS"})
+                    }
+                })
+               
+            }else{
+                res.send({msg:"err"})
+            }
+        })
+    }
+})
 
 
 

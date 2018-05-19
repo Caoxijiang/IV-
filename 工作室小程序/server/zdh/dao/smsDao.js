@@ -29,7 +29,7 @@ module.exports={
                     })
                 }
             ],function(err,res){
-                connection.release;
+                connection.release();
                 callback(res)
             });
         });
@@ -37,7 +37,8 @@ module.exports={
     selectphoneNUm:function(req,callback){
 		pool.getConnection(function(err, connection){
 			connection.query($sql.selectphoneNum ,[req],function(err, results, fields){
-				if(err) throw err;
+                if(err) throw err;
+                connection.release();
 				callback(results[0])
 			});
 		})

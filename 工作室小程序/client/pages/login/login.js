@@ -7,13 +7,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+    modalHidden: true,
+    modalHidden2: true,
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    userInfo:""
   },
   getPhoneNumber: function (e) {
     var self=this;
-    if (app.globalData.userInfo == undefined || app.globalData.userInfo == "" || app.globalData.userInfo==null ){
-      app.scorp();
-      self.phoneUtil(e);
+    if (self.data.userInfo == undefined || self.data.userInfo == "" || self.data.userInfo==null ){
+      this.scorp();
+     // self.phoneUtil(e);
     }else{
       self.phoneUtil(e);
     }
@@ -29,6 +32,7 @@ Page({
     })
   },
   phoneUtil:function(e){
+    var self=this;
     console.log("111", e.detail.errMsg)
     console.log("iv :", e.detail.iv)
     console.log("encryptedData :", e.detail.encryptedData)
@@ -41,14 +45,9 @@ Page({
         success: function (res) { }
       })
     } else {
-      wx.showModal({
-        title: '提示',
-        showCancel: false,
-        content: '同意授权',
-        success: function (res) {
           var encryptedData = e.detail.encryptedData;
           var iv = e.detail.iv;
-          console.log(app.globalData.userInfo.nickName);
+        //  console.log(data.userInfo);
           wx.showLoading({
             title: '登陆中',
           })
@@ -58,7 +57,7 @@ Page({
               encryptedData: encryptedData,
               iv: iv,
               token: app.globalData.token,
-              wxuserInfo: app.globalData.userInfo
+              wxuserInfo: self.data.userInfo
             },
             success: function (res) {
               console.log("132132" + JSON.stringify(res));
@@ -73,7 +72,6 @@ Page({
                     console.log(121213)
                   }
                 })
-                wx.clearStorage()
               } else if(res.data.msg=="LOGINSUCCESS"){
                 wx.switchTab({
                   url: '/pages/index/index',
@@ -87,7 +85,7 @@ Page({
                   fail:function(){
                     wx.showModal({
                       title: '提示',
-                      content: '登陆失败',
+                      content: '登陆失败',   
                     })
                   }
                 })
@@ -139,9 +137,86 @@ Page({
               })
             }
           })
-        }
-      })
+
     }
-  }  
+  },onShow:function(){
+    this.scorp()
+    //this.bindGetUserInfos();
+  
+   
+  },
+  modalTap2: function (e) {
+    this.setData({
+      modalHidden2: false
+    })
+  },
+  scorp: function () {
+    var self = this;
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+          wx.getUserInfo({
+            success: res => {
+              // 可以将 res 发送给后台解码出 unionId
+              console.log("userInfo: " + JSON.stringify(res.userInfo))
+             // self.globalData.userInfo = res.userInfo
+              self.setData({
+                userInfo: res.userInfo
+              })
+              // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+              // 所以此处加入 callback 以防止这种情况
+            }
+          })
+        } else {
+          //this.bindGetUserInfo();
+           this.modalTap2();
+          // console.log(this.modalTap2());
+
+        }
+      }, fail: function (res) {
+        console.log("接口调用失败")    
+      }
+    })
+  },
+  bindGetUserInfo: function (e) {
+    if (e.detail.errMsg =="getUserInfo:fail auth deny"){
+        wx.showModal({
+        title: '提示',
+        showCancel: false,
+        content: '未授权',
+        success: function (res) { }
+      })
+    }else{
+      var self = this;
+      self.setData({
+        userInfo: e.detail.userInfo,
+        modalHidden2: true
+      })
+     console.log(e)
+   }
+ console.log(324)
+  
+    
+  },
+  modalChange2: function (e) {
+    var self=this;
+    wx.showModal({
+      title: '警告',
+      content: '未授权将无法使用小程序',
+      complete: function () {
+        self.setData({
+          modalHidden2: false,
+        })
+      }
+    })
+
+  },
+  modalChange: function (e) {
+
+    this.setData({
+      modalHidden: true
+    })
+  },
 
 })

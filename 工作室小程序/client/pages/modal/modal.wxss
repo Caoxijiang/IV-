@@ -1,0 +1,13 @@
+/* pages/demo/demo.wxss */
+ .fds{
+ height:88rpx;
+  background: green;
+  width: 117%;
+  margin-left: -40rpx;
+  text-align: center;
+  line-height: 88rpx;
+} 
+/* .ss-btn01{
+
+  width: 120%;
+} */

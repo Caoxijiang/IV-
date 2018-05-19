@@ -16,5 +16,37 @@ $().ready(function(){
                 }
             }
         })
+    }),
+    $("#schedule-btn").click(function(){
+        $.ajax({
+            url:"/adminschedule/selectschedule",
+            success:function(data){
+                alert(JSON.stringify(data))
+            }
+        })
+    }),
+    $("#dellschedule-btn").click(function(){
+        $.ajax({
+            url:"/adminschedule/dellschedule",
+            success:function(data){
+                if(data){
+                    alert(data.msg)
+                }else{
+                    alert(Error)
+                }
+            }
+        })
+    }),
+    $("#dellstimechedule-btn").click(function(){
+        $.ajax({
+            url:"/adminschedule/delltimeId",
+            success:function(data){
+                if(data){
+                    alert(data.msg)
+                }else{
+                    alert(Error)
+                }
+            }
+        })
     })
 })

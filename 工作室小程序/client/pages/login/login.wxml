@@ -13,3 +13,24 @@
   </view>
  
 </page>
+
+
+<view>
+<modal title="标题" confirm-text="confirm" cancel-text="cancel" hidden="{{modalHidden}}" bindconfirm="modalChange" bindcancel="modalChange">
+ 这是对话框的内容。
+</modal>
+ 
+<modal class="modal" hidden="{{modalHidden2}}" confirm-text="取消" no-cancel bindconfirm="modalChange2">
+<!-- <view class='fds' wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登陆 </view>
+<view wx:else>请升级微信版本</view> -->
+<button wx:if="{{canIUse}}" class="ss-btn01" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">微信授权</button>
+<view wx:else>请升级微信版本</view> 
+</modal>
+
+<view class="btn-area">
+ <!-- <button type="default" bindtap="modalTap">点击弹出modal</button> -->
+  <!-- <button type="default" bindtap="modalTap2">点击弹出modal</button>  -->
+  <text bindtap="modalTap2"></text>
+</view>
+
+</view>

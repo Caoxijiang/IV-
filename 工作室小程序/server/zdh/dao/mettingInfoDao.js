@@ -72,6 +72,7 @@ module.exports={
             connection.query($sql.dellmeetingList,[req],function(err,results,fields){
                 if(err) throw err;
                 var msg="DELLSUCCESS"
+                connection.release();
                 callback(msg)
             })
         });

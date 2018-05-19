@@ -61,6 +61,7 @@ module.exports = {
                 if(err) throw err;
                 var msg="DELLSUCCESS";
                 callback(msg);
+                connection.release();
             })
         });
     }
