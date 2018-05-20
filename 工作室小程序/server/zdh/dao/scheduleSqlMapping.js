@@ -9,6 +9,7 @@ var schedule={
     dellalltimeId:"delete  from schedule_timeid where schedule_id=?",
     dellalldaninfo:"delete  from schedule_timeinfo where schedule_time_id=? ",
     dellalltimeIdBytid:"delete  from schedule_timeid where schedule_time_id=?",
+    updatadanInfo:"update schedule_timeinfo set schedule_time_content=?,schedule_time_dan=? where schedule_time_id=?"
 
 
 }

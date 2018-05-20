@@ -120,6 +120,26 @@ router.all("/delltimeId",function(req,res){
     }
 })
 
+router.all("/updatadaninfo",function(req,res){
+    if(req.originalUrl != "/" && !req.session.userName){
+        res.redirect("/");
+    }else{
+        var daninfo={};
+        var ID=req.query.ID;
+        var concent=req.query.concent;
+        var dan =req.query.dan;
+        daninfo.ID=ID;
+        daninfo.concent=concent;
+        daninfo.dan=dan
+        scheduleDao.updatadaninfo(daninfo,function(data){
+            if(data.msg="UPDATASUCCESS"){
+                res.send({msg:"更新成功"})
+            }else{
+                res.send({msg:"更新失败"});
+            }
+        })
+    }
+})
 
 
 

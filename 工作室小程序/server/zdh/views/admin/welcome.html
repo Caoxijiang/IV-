@@ -58,6 +58,7 @@
         <script src="../../public/js/deletemeeting.js"></script>
         <script src="../../public/js/guests.js"></script>
         <script src="../../public/js/schedule.js"></script>
+        <script src="../../public/js/cputil.js"></script>
         <div>
             <input type="button" id="test1" value="查询会议信息"/>
         </div>
@@ -112,6 +113,23 @@
             <input type="button" id="dellstimechedule-btn" value="删除某个时间段"/>
         </div>
 
+        <div>
+            <input type="text" name="days" id="timeID" class="text_field" placeholder="时间"/>
+            <input type="text" name="topic" id="dans" class="text_field" placeholder="时间段"/>
+            <input type="text" name="topic" id="concents" class="text_field" placeholder="内容"/>  
+            <input type="button" id="updatadan-btn" value="修改时间段内容"/>
+        </div>
+
+        <div>
+            <form id="CputiluploadForm"  method="post" enctype="multipart/form-data">
+                <input type="file" id="cpfileId" name="cpimage" value="上传合作单位图片"/>
+                <input type="text" name="cpname" id="cpname" class="text_field" placeholder="名字"/>
+                <input type="text" name="cptype" id="cptype" class="text_field" placeholder="类型"/>
+                <input type="button" id="cpsubmit" value="上传"/>
+                <input type="button" id="cpselect" value="查询"/>
+                <input type="button" id="cpdell" value="删除"/>
+            </form>
+        </div>
 </body>
 {% endblock %}
 </html>

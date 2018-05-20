@@ -153,5 +153,15 @@ module.exports={
                 callback(msg)
             })
         })
+    },
+    updatadaninfo:function(req,callback){
+        pool.getConnection(function(err,connection){
+            connection.query($sql.updatadanInfo,[req.concent,req.dan,req.ID],function(err,results,fields){
+                if(err) throw err;
+                var msg="SUCCESS";
+                connection.release();
+                callback(msg)
+            })
+        })
     }
 }

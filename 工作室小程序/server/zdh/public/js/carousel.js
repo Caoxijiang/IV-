@@ -3,7 +3,7 @@ $().ready(function(){
         var image=$("#fileIds")[0].files[0];
         var a = new FormData();
         a.append("image2", image);
-        var formData = new FormData($( "#uploadForms" )[0]);  
+        var formData = new FormData($( "#CputiluploadForm" )[0]);  
         $.ajax({
             url:"/image/CarouseluploadImage",
             data: formData,
