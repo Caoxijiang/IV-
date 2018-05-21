@@ -41,6 +41,7 @@ $().ready(function(){
 
     $("#selectsubmits").click(function(){
         $.ajax({
+            
             url:"/admincarousel/selectcarousel",
             success:function(data){
                 if(data.msg){

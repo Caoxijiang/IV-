@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var cputilDao=require("../dao/cputilDao");
 var deleteimages=require('../util/util').delete;
-var deleteimages=require('../util/util').delete;
+
 
 router.all("/cpAllselect",function(req,res){
     if(req.originalUrl != "/" && !req.session.userName){

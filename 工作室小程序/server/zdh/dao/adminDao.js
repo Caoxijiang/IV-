@@ -1,6 +1,5 @@
 var mysql = require('mysql');
 var $conf = require('../conf/db');
-var mysql = require('mysql');
 var $util = require('../util/util');
 var $sql = require('./adminSqlMapping');
 var async = require('async');

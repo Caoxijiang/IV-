@@ -59,6 +59,7 @@
         <script src="../../public/js/guests.js"></script>
         <script src="../../public/js/schedule.js"></script>
         <script src="../../public/js/cputil.js"></script>
+        <script src="../../public/js/contact.js"></script>
         <div>
             <input type="button" id="test1" value="查询会议信息"/>
         </div>
@@ -130,6 +131,25 @@
                 <input type="button" id="cpdell" value="删除"/>
             </form>
         </div>
+
+
+        <div>
+            <form id="CtuploadForm"  method="post" enctype="multipart/form-data">
+                <input type="file" id="ctfileId1" name="ctavatarUrl" value="头像"/>
+                <input type="file" id="ctfileId2" name="ctQrurl" value="二维码"/>
+                <input type="text" name="ctname" id="ctname" class="text_field" placeholder="名字"/>
+                <input type="text" name="ctChJname" id="ctChJname" class="text_field" placeholder="中文职位"/>
+                <input type="text" name="ctUnJname" id="ctUnJname" class="text_field" placeholder="英文职位"/>
+                <input type="text" name="ctphone" id="ctphone" class="text_field" placeholder="手机号"/>
+                <input type="text" name="ctemail" id="ctemail" class="text_field" placeholder="邮箱"/>
+                <input type="text" name="ctwxnum" id="ctwxnum" class="text_field" placeholder="微信号  "/>
+                <input type="button" id="ctsubmit" value="上传"/>
+                <input type="button" id="ctfsubmit" value="查询"/>
+                <input type="button" id="dellct" value="删除"/>
+            </form>
+        </div>
+
+
 </body>
 {% endblock %}
 </html>

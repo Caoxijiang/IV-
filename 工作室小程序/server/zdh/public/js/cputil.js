@@ -1,4 +1,5 @@
 $().ready(function(){
+    //上传合作单位
     $("#cpsubmit").click(function(){
         var image=$("#cpfileId")[0].files[0];
         var a = new FormData();
@@ -23,6 +24,7 @@ $().ready(function(){
 
         }) 
     })
+    //获取合作单位
     $("#cpselect").click(function(){
         $.ajax({
             url:"/damincputilInfo/cpAllselect",
@@ -34,6 +36,7 @@ $().ready(function(){
             }
         })
     })
+    //根据cputil_id删除合作单位信息
     $("#cpdell").click(function(){
         var cpid=7;
         $.ajax({

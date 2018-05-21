@@ -1,6 +1,6 @@
 $().ready(function(){
     $("#submit").click(function () {
-        var topic=$('#topic').val().ser;
+        var topic=$('#topic').val();
         var Summary=$('#Summary').val();
         var datetimeStart=$("#datetimeStart").val();
         alert(datetimeStart)

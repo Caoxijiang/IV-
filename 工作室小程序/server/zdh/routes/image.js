@@ -9,7 +9,8 @@ var url=require('../conf/imageconf').url;
 var meetingeDao=require('../dao/mettinginfoDao');
 var indexDao=require('../dao/indexDao');
 var guestsDao=require('../dao/guestsDao');
-var cputilDao=require('../dao/cputilDao')
+var cputilDao=require('../dao/cputilDao');
+var ctDao=require('../dao/adminctDao')
 var deleteimages=require('../util/util').delete;
 router.all('/uploadImage', function(req, res) {
         console.log(req.session.userName);
@@ -69,6 +70,7 @@ router.all('/uploadImage', function(req, res) {
            
                    }
                 }
+
                }
             });
         } 
@@ -269,6 +271,137 @@ router.all('/uploadImage', function(req, res) {
         } 
 
      });
+
+
+
+     router.all('/adminctInfo', function(req, res) {
+        console.log(req.session.userName);
+        if(req.originalUrl != "/" && !req.session.userName){
+            res.redirect("/");
+        }else{
+            var form = new formidable.IncomingForm();
+            form.encoding = 'utf-8'; 
+            form.keepExtensions = true;     //保留后缀
+            form.maxFieldsSize = 2 * 1024 * 1024;   //文件大小    
+            form.uploadDir = "./public/images/touchImages/"; //改变临时目录
+            
+            form.parse(req, function(error, fields, files) {
+             //  console.log(JSON.stringify(fields));  
+                if(error){
+                   res.send("失败");
+                }else{
+                    var arr=[];
+                    var index =1;
+                    console.log(index)
+                    var ctinfo={}
+                    
+                   for (var key in files) {
+                       var file = files[key];
+                       var fName = "";
+                       switch (file.type) {
+                           case "image/jpeg":
+                               fName = fName + ".jpg";
+                               break;
+                           case "image/png": 
+                               fName = fName + ".png";
+                               break;
+                           default:
+                               fName = fName + ".png";  
+                               break;
+                       }
+                        console.log(file, file.size);
+                       
+                       if(fName.length<=0){
+                          res.send('uploadIcon img type err');
+                       }else{
+                           var newName=(new Date()).getTime();
+                           var uploadDir1 = "./public/images/touchImages/"+newName+fName;
+                         //  var uploadDir2="./public/images/touchImages/ctQrImage/"+newName+fName;
+                         // var oldpath1=files.ctavatarUrl.path;
+                          //var oldpat2=files.ctQrurl.path;  
+                                                                            
+                    //        fs.rename(file.path, uploadDir, function(err) {
+                    //            if (err) {
+                    //               
+                    //            }else{
+                    //              console.log(uploadDir);
+                    //              arr.push(uploadDir)
+                    //         }
+                           
+                    //    })
+                    try {    
+                        if(files.ctavatarUrl.path==file.path){
+                            var newctavatarUrl= fs.renameSync(files.ctavatarUrl.path,uploadDir1); 
+                            var ctavatarUrl=url+uploadDir1.replace(".","")
+                            ctinfo.ctavatarUrl=ctavatarUrl;
+                            console.log(ctavatarUrl);
+                        }else{
+                            var newcctQrurl=fs.renameSync(files.ctQrurl.path,uploadDir1)
+                            var ctQrurl=url+uploadDir1.replace(".","");
+                            ctinfo.ctQrurl=ctQrurl;
+                        }                        
+                       
+                    } catch (error) {
+                        res.send({msg:"图片存入服务器失败"});
+                    }
+                    
+                       
+                   }
+
+                }
+                ctinfo.admin=req.session.userName;
+                ctinfo.ctname=fields.ctname;
+                ctinfo.ctChJname=fields.ctChJname;
+                ctinfo.ctUnJname=fields.ctUnJname;
+                ctinfo.ctphone=fields.ctphone;
+                ctinfo.ctemail=fields.ctemail;
+                ctinfo.ctwxnum=fields.ctwxnum;
+                ctDao.insertctInfo(ctinfo,function(data){
+                    if(data.msg=="SUCCESS"){
+                        res.send({msg:"发表成功"})
+                    }else{
+                        res.send({msg:"发表失败"})
+                    }
+                })
+               // console.log(arr)
+               }
+            });
+        } 
+
+     });
+
+
+    //  function create(n) 
+    //  { 
+         
+    //      while(--n!=0) 
+    //      { 
+    //          return     temp+","+create(n);     
+     
+    //      } 
+    //      if(n==0) 
+    //      { 
+    //          return temp; 
+    //      } 
+     
+    //  } 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 module.exports = router;

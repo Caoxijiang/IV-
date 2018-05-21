@@ -11,7 +11,7 @@ router.all("/dellguestsInfo",function(req,res){
         guestsDao.dellguestsInfoById(ID,function(data){   
             if(data.msg=="DELLSUCCESS"){
                 var urls=data.url;
-
+                
                 var fileName=urls.slice(53,72);
                 var filepath="./public/images/guestsImage/"+fileName;
                 console.log(filepath)
