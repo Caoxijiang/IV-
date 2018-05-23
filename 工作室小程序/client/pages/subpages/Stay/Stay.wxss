@@ -1,0 +1,14 @@
+/* pages/Schedule/Schedule.wxss */
+.stayBox{
+  padding: 30rpx;
+}
+.line{
+  margin-top: 10rpx;
+}
+.imgli{
+  width: 49%;
+  display: inline-block;
+}
+image{
+  width: 100%;
+}

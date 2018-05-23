@@ -1,0 +1,45 @@
+<!--index.wxml-->
+ <view class="item-header">
+    <view class="item-search">
+      <image class="item-image" src="/../../images/index-icon/seach.png" mode="widthFix" />
+       <input class="item-input" placeholder="搜索" focus="{{focus}}" />
+    </view>
+    <image class="code" src="/../../images/index-icon/code.png" mode="widthFix" />
+      
+ </view>
+
+<swiper indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-dots="true" autoplay="true">
+  <block  wx:for="{{imgUrls}}">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image" width="355" height="150"/>
+    </swiper-item>
+  </block>
+</swiper>
+
+<view class='stayBox'>
+  <view class='line'><!--行元素-->
+    <view class='imgli left'>
+      <image src='/../../images/Stay/11.png' mode='widthFix'></image>
+    </view>
+    <view class='imgli right'>
+      <image src='/../../images/Stay/12.png' mode='widthFix'></image>
+    </view>
+  </view>
+  <view class='line'><!--行元素-->
+    <view class='imgli left'>
+      <image src='/../../images/Stay/21.png' mode='widthFix'></image>
+    </view>
+    <view class='imgli right'>
+      <image src='/../../images/Stay/22.png' mode='widthFix'></image>
+    </view>
+  </view>
+  <view class='line'><!--行元素-->
+    <view class='imgli left'>
+      <image src='/../../images/Stay/31.png' mode='widthFix'></image>
+    </view>
+    <view class='imgli right'>
+      <image src='/../../images/Stay/32.png' mode='widthFix'></image>
+    </view>
+  </view>
+</view>

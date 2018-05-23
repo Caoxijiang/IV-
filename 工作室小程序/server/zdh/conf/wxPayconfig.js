@@ -2,8 +2,8 @@
 var wxConfig = {
     AppID: "wx5e7537035eaaf2ba",  // 小程序ID  
     Secret: "48424f8224b05cae5359abf8ea6a9a23",  // 小程序Secret
-    Mch_id: "1503504461", // 商户号
-    Mch_key: "IV2018CaoxijiangYuxiaoxiaoIV2018", // 商户key
+    Mch_id: "1496899342", // 商户号
+    Mch_key: "DNYjx123Gjm456Cxj789Syl123Lyp456", // 商户key
     // 生成商户订单号
     getWxPayOrdrID: function(){
         var myDate = new Date();

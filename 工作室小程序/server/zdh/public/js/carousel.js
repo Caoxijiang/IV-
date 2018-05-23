@@ -3,9 +3,9 @@ $().ready(function(){
         var image=$("#fileIds")[0].files[0];
         var a = new FormData();
         a.append("image2", image);
-        var formData = new FormData($( "#CputiluploadForm" )[0]);  
+        var formData = new FormData($( "#uploadForms" )[0]);  
         $.ajax({
-            url:"/image/CarouseluploadImage",
+            url:"/image/CarouseluploadImage",//上传轮播图片
             data: formData,
             type: "POST",
             cache: false,
@@ -22,7 +22,7 @@ $().ready(function(){
 
         })  
     });
-
+//删除轮播
     $("#dellsubmits").click(function(){
         var carouselid=6;
       $.ajax({
@@ -38,10 +38,9 @@ $().ready(function(){
           }
       })   
     })
-
+//查询轮播
     $("#selectsubmits").click(function(){
         $.ajax({
-            
             url:"/admincarousel/selectcarousel",
             success:function(data){
                 if(data.msg){

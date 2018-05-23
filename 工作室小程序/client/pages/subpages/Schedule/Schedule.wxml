@@ -1,0 +1,160 @@
+<!--index.wxml-->
+ <view class="item-header">
+    <view class="item-search">
+      <image class="item-image" src="/../../images/index-icon/seach.png" mode="widthFix" />
+       <input class="item-input" placeholder="搜索" focus="{{focus}}" />
+    </view>
+    <image class="code" src="/../../images/index-icon/code.png" mode="widthFix" />
+      
+ </view>
+
+<swiper indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-dots="true" autoplay="true">
+  <block  wx:for="{{imgUrls}}">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image" width="355" height="150"/>
+    </swiper-item>
+  </block>
+</swiper>
+
+<view class='schedule-list'>
+      <view class='schedule-date'>
+          <view class='schedule-week'>星期三</view>
+          <text class='schedule-day'>26</text>
+          <view class="schedule-D">DATE</view>      
+     </view>
+     <view class='schedule-date'>
+           <view class='schedule-week'>星期四</view>
+          <text class='schedule-day'>27</text>
+          <view class="schedule-D">DATE</view>
+           <view class='schedule-dateBox'>
+            </view>
+     </view>
+     <view class='schedule-date .schedule-date-H'>
+          <view class='schedule-week'>星期五</view>
+          <text class='schedule-day'>28</text>
+          <view class="schedule-D">DATE</view>
+     </view>
+     <view class='schedule-date .schedule-date-H'>
+           <view class='schedule-week '>星期六</view>
+          <text class='schedule-day'>29</text>
+          <view class="schedule-D">DATE</view>
+     </view>
+     <view class='schedule-date .schedule-date-H'>
+          <view class='schedule-week'>星期天</view>
+          <text class='schedule-day'>30</text>
+          <view class="schedule-D">DATE</view>
+     </view>
+</view>
+<view class="schedule-footer" style='background:#fff url(/../../images/schedule-icon/line.png);'>
+<!--scheduleList 循环-->
+    <view class='scheduleLi' bindtap="onChangeShowState">
+      <view class='time'>
+      09：00
+      </view>
+      <image src='/../../images/schedule-icon/3-08.png' mode='widthFix' class='img' />
+      <view class='schedcon' style='background:url(/../../images/schedule-icon/tag.png) left  no-repeat;'>
+        <view class='mainCon'>
+          第29届国际智能车大会开幕<br />
+          智能汽车跨界融合高峰科技论坛开幕
+        </view>
+      </view>
+    </view>
+    <!--scheduleList 循环-->
+    <view class="bright789_view_hide{{showView?'bright789_view_show':''}}" ><!--详细信息-->
+    <!--scheduleList子菜单-->
+    <view class='scheduleLi'>
+      <view class='time'>
+      10：30
+      </view>
+      <image src='/../../images/schedule-icon/point.png' mode='widthFix' class='img' /> 
+      <view class='schedcon' style='background:url(/../../images/schedule-icon/tag.png) left  no-repeat;'>
+        <view class='mainCon'>
+          大会合影
+        </view>
+      </view>
+    </view>
+    <!--scheduleList 子菜单-->
+
+    <!--scheduleList子菜单-->
+    <view class='scheduleLi'>
+      <view class='time'>
+      10：30
+      </view>
+      <image src='/../../images/schedule-icon/point.png' mode='widthFix' class='img' /> 
+      <view class='schedcon' style='background:url(/../../images/schedule-icon/tag.png) left  no-repeat;'>
+        <view class='mainCon'>
+          大会合影
+        </view>
+      </view>
+    </view>
+    <!--scheduleList 子菜单-->
+
+    <!--scheduleList子菜单-->
+    <view class='scheduleLi'>
+      <view class='time'>
+      10：30
+      </view>
+      <image src='/../../images/schedule-icon/point.png' mode='widthFix' class='img' /> 
+      <view class='schedcon' style='background:url(/../../images/schedule-icon/tag.png) left  no-repeat;'>
+        <view class='mainCon'>
+          大会合影
+        </view>
+      </view>
+    </view>
+    <!--scheduleList 子菜单-->
+    </view><!--详细信息-->
+    <!--scheduleList 循环-->
+    <view class='scheduleLi'>
+      <view class='time'>
+      10：30
+      </view>
+      <image src='/../../images/schedule-icon/3-08.png' mode='widthFix' class='img' /> 
+      <view class='schedcon' style='background:url(/../../images/schedule-icon/tag.png) left  no-repeat;'>
+        <view class='mainCon'>
+          大会合影
+        </view>
+      </view>
+    </view>
+    <!--scheduleList 循环-->
+    <!--scheduleList 循环-->
+    <view class='scheduleLi'>
+      <view class='time'>
+      11：00
+      </view>
+      <image src='/../../images/schedule-icon/3-08.png' mode='widthFix' class='img' /> 
+      <view class='schedcon' style='background:url(/../../images/schedule-icon/tag.png) left  no-repeat;'>
+        <view class='mainCon'>
+          主题报告
+        </view>
+      </view>
+    </view>
+    <!--scheduleList 循环-->
+    <!--scheduleList 循环-->
+    <view class='scheduleLi'>
+      <view class='time'>
+      11：30
+      </view>
+      <image src='/../../images/schedule-icon/3-08.png' mode='widthFix' class='img' /> 
+      <view class='schedcon' style='background:url(/../../images/schedule-icon/tag.png) left  no-repeat;'>
+        <view class='mainCon'>
+          午餐时间
+        </view>
+      </view>
+    </view>
+    <!--scheduleList 循环-->
+    <!--scheduleList 循环-->
+    <view class='scheduleLi'>
+      <view class='time'>
+      10：30
+      </view>
+      <image src='/../../images/schedule-icon/3-08.png' mode='widthFix' class='img' /> 
+      <view class='schedcon' style='background:url(/../../images/schedule-icon/tag.png) left  no-repeat;'>
+        <view class='mainCon'>
+          大会合影
+        </view>
+      </view>
+    </view>
+    <!--scheduleList 循环-->
+</view>
+

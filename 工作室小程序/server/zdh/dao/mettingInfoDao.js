@@ -69,12 +69,76 @@ module.exports={
     },
     dellmeetingList:function(req,callback){
         pool.getConnection(function(err,connection){
-            connection.query($sql.dellmeetingList,[req],function(err,results,fields){
+            data={};
+            async.waterfall([
+                function(callback){
+                    connection.query($sql.dellmeetingList,[req],function(err,results,fields){
+                        if(err) throw err;
+                        var msg1="DELLSUCCESS"
+                        callback(null,data)
+                    })
+                },function(req,callback){
+                    connection.query($sql.deletecomminfobymettingid,[req],function(err,results,fields){
+                        var msg2="DELLSUCCESS";
+                        callback(null,data);
+                    })
+                }
+            ],function(err,res){
+                connection.release();
+                callback(res);
+            })
+        });
+    },
+    insertrecommendInfo:function(req,req1,callback){
+        pool.getConnection(function(err,connection){
+            var data={};
+            async.waterfall([
+                function(callback){
+                    connection.query($sql.selectadminUserid,[req.admin],function(err,results,fields){
+                        if(err)throw err;
+                        data.adminUserid=results[0].user_id;
+                        callback(null,data)
+                    });
+                },function(data,callback){
+                    connection.query($sql.insertrecommendInfo,[data.adminUserid,req1],function(err,results,fields){
+                        if(err)throw err;
+                        data.msg="SUCCESS"
+                        callback(null,data)
+                    });
+                }
+            ],function(err,res){
+                connection.release();	
+                callback(res);
+            })
+        })
+    },
+    selectmeetcomlistInfo:function(callback){
+        pool.getConnection(function(err,connection){
+            connection.query($sql.selectcommfromcommInfo,function(err,results,fields){
+                if(err)throw err;
+                connection.release();
+                callback(results);
+            })
+        })
+    },
+    selectcommListBymetinfid:function(req,callback){
+        pool.getConnection(function(err,connection){
+            connection.query($sql.selectcommeetingList,[req],function(err,results,fields){
+                if(err) throw err;
+                connection.release();
+                callback(results);
+            })
+        })
+    },
+    dellmeetingLists:function(req,callback){
+        pool.getConnection(function(err,connection){
+            connection.query($sql.deletecomminfobymettingid,[req],function(err,results,fields){
                 if(err) throw err;
                 var msg="DELLSUCCESS"
                 connection.release();
-                callback(msg)
+                callback(msg);
             })
-        });
+        })
     }
+
 }

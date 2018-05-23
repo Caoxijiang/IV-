@@ -1,5 +1,6 @@
 $().ready(function(){
     $("#ctsubmit").click(function(){
+        //上传联系我们个人信息
         var formData = new FormData($( "#CtuploadForm" )[0]);  
         // var image=$("#ctavatarUrl")[0].files[0];
         // var image2=$("#ctavatarUrl")[1].files[1]
@@ -21,6 +22,7 @@ $().ready(function(){
             }
         })
     })
+    //获取联系我们信息
     $("#ctfsubmit").click(function(){
         $.ajax({
             url:"/adminctInfo/selectAllctinfo",
@@ -32,6 +34,7 @@ $().ready(function(){
             
         })
     })
+    //根据tppe_id删除
     $("#dellct").click(function(){
         var ID=23;
         $.ajax({

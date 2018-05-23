@@ -1,18 +1,17 @@
 <!--index.wxml-->
  <view class="item-header">
-      <!--<view class='item-city'>
-         
-      </view>-->
-      <view class="item-search">
-      <image class="item-image" src="../../images/index-icon/未标题-1-12.png"/>
+    <view class="item-search">
+      <image class="item-image" src="../../images/index-icon/seach.png" mode="widthFix" />
        <input class="item-input" placeholder="搜索" focus="{{focus}}" />
-      </view>
-  </view>
+    </view>
+    <image class="code" src="../../images/index-icon/code.png" mode="widthFix" />
+      
+ </view>
 
 <swiper indicator-dots="{{indicatorDots}}"
   autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-dots="true" autoplay="true">
   <block  wx:for="{{imgUrls}}" wx:key="{{index}}">
-    <swiper-item>
+    <swiper-item style="position:relative !important;">
       <image src="{{item.carousel_url}}" class="slide-image" width="355" height="150"/>
     </swiper-item>
   </block>
@@ -21,44 +20,54 @@
    <view class="main-nav">
        <view class="main-topNav" >
          <view class="main-listT"  data-index='{{inidex}}'>
-          <navigator url="../Introduction/Introduction">
-            <image class="main-img"   src="./../../images/index-icon/1-03.png"></image>
+          <navigator url="../subpages/Introduction/Introduction">
+            <image class="main-img"   src="./../../images/index-icon/1-01.png"  mode="widthFix"></image>
           </navigator>
-            <text>大会简介</text>
+            <text class='lable'>大会简介</text>
          </view>
          <view class="main-listT" bindtap='toDetail' data-index='{{inidex}}'>
-             <navigator url="../Schedule/Schedule">
-            <image class="main-img"  src="./../../images/index-icon/1-03.png"></image>
-            <text>大会日程</text>
+             <navigator url="../subpages/Schedule/Schedule">
+            <image class="main-img"  src="./../../images/index-icon/1-02.png"  mode="widthFix"></image>
+            <text class='lable'>大会日程</text>
             </navigator>
          </view>
          <view class="main-listT" bindtap='toDetail' data-index='{{inidex}}'>
-            <image class="main-img"  src="./../../images/index-icon/1-03.png"></image>
-            <text>参会注册</text>
+          <navigator url="../subpages/Registor/Registor">
+            <image class="main-img"  src="./../../images/index-icon/1-03.png"  mode="widthFix"></image>
+            <text class='lable'>参会注册</text>
+          </navigator>
          </view>
          <view class="main-listT" bindtap='toDetail' data-index='{{inidex}}'>
-         <navigator url="../Introduction/Introduction">
-            <image class="main-img"  src="./../../images/index-icon/1-03.png"></image>
-            <text>大会新闻</text>
+         <navigator url="../subpages/News/News">
+            <image class="main-img"  src="./../../images/index-icon/1-04.png"  mode="widthFix"></image>
+            <text class='lable'>大会新闻</text>
             </navigator>
          </view>
     </view>
     <view class="main-bottomNav">
         <view class="main-listB" bindtap='toDetail' data-index='{{inidex}}'>
-            <image class="main-img"   src="./../../images/index-icon/1-03.png"></image>
-            <text>大会嘉宾</text>
+          <navigator url="../subpages/Guest/Guest">
+            <image class="main-img"   src="./../../images/index-icon/1-05.png"  mode="widthFix"></image>
+            <text class='lable' >大会嘉宾</text>
+          </navigator>
          </view>
          <view class="main-listB" bindtap='toDetail' data-index='{{inidex}}'>
-            <image class="main-img"  src="./../../images/index-icon/1-03.png"></image>
-            <text>合作单位</text>
+            <navigator url="../subpages/Cooperator/Cooperator">
+            <image class="main-img"  src="./../../images/index-icon/1-06.png"  mode="widthFix"></image>
+            <text class='lable'>合作单位</text>
+            </navigator>
          </view>
          <view class="main-listB" bindtap='toDetail' data-index='{{inidex}}'>
-            <image class="main-img"  src="./../../images/index-icon/1-03.png"></image>
-            <text>交通住宿</text>
+            <navigator url="../subpages/Stay/Stay">
+            <image class="main-img"  src="./../../images/index-icon/1-07.png"  mode="widthFix"></image>
+            <text class='lable'>交通住宿</text>
+            </navigator>
          </view>
          <view class="main-listB" bindtap='toDetail' data-index='{{inidex}}'>
-            <image class="main-img"  src="./../../images/index-icon/1-03.png"></image>
-            <text>联系我们</text>
+          <navigator url="../subpages/Contact/Contact">
+            <image class="main-img"  src="./../../images/index-icon/1-08.png"  mode="widthFix"></image>
+            <text class='lable'>联系我们</text>
+          </navigator>
          </view>
     </view>  
    </view>
@@ -68,32 +77,37 @@
     <view class="pro-Recommend">
          <view class='pro-RecommendTitle'><text  class='pro-RecommendTxt'>强力推荐</text></view>   
     </view>
-   <view class='pro-content' bindtap='toDetail'wx:for="{{metingInfo}}" wx:key="index">
-         <view class='pro-item'>
-    <image class='pro-logo' src='{{metingInfo[index].metting_imageUrl}}'></image>
-    <view class='pro-body'>
-       <view class='pro-title'>{{metingInfo[index].metting_topic}}</view>
-        <view class="pro-Desc">{{metingInfo[index].metting_Summary}}</view> 
-       <view class='pro-date'>{{metingInfo[index].metting_startTime}}</view>
-     </view>
-    </view>
+   <view class='pro-content' bindtap='toDetail' wx:key="index">
+    <!--对pro-item 循环-->
+      <view class='pro-item'>
+          <image class='pro-logo' src='./../../images/index-icon/list1.jpg'></image>
+          <view class='pro-body'>
+            <view class='pro-title'>2018国家职能产业峰会</view>
+              <view class="pro-Desc">人工职能作为新一轮产业变革的核心驱动力，将进一步释放历次科技革命和产业变革积蓄的巨大能量，并创造新的强大...</view> 
+            <view class='pro-date'>2018年04/28-05/01</view>
+          </view>
+      </view>
+      <!--对pro-item 循环-->
+       <!--对pro-item 循环-->
+      <view class='pro-item'>
+          <image class='pro-logo' src='./../../images/index-icon/list2.jpg'></image>
+          <view class='pro-body'>
+            <view class='pro-title'>2018国家职能产业峰会</view>
+              <view class="pro-Desc">人工职能作为新一轮产业变革的核心驱动力，将进一步释放历次科技革命和产业变革积蓄的巨大能量，并创造新的强大...</view> 
+            <view class='pro-date'>2018年04/28-05/01</view>
+          </view>
+      </view>
+      <!--对pro-item 循环-->
    </view>
-   <!--2-->
-    <!-- <view class='pro-content' bindtap='toDetail' data-index='{{inidex}}'>   
-         <view class='pro-item'>
-    <image class='pro-logo' src='./../../images/index-icon/1-03.png'></image>
-    <view class='pro-body'>
-       <view class='pro-title'>2018国家职能产业峰会</view>
-        <view class="pro-Desc">人工职能作为新一轮产业变革的核心驱动力，将进一步释放历次科技革命和产业变革积蓄的巨大能量，并创造新的强大引擎，随着互联网，大数据，云计算物联网等</view> 
-       <view class='pro-date'>2018年04/28-05/01</view>
-     </view>
-    </view>
-   </view> -->
-   <!--2-->
-</view>
-<view class="container">
- 
-  <view class="usermotto">
-  
-  </view>
+
+   <!--<view class='pro-content' bindtap='toDetail' wx:key="index">
+      <view class='pro-item' wx:for="{{metingInfo}}">
+          <image class='pro-logo' src='{{metingInfo[index].metting_imageUrl}}'></image>
+          <view class='pro-body'>
+            <view class='pro-title'>{{metingInfo[index].metting_topic}}</view>
+              <view class="pro-Desc">{{metingInfo[index].metting_Summary}}</view> 
+            <view class='pro-date'>{{metingInfo[index].metting_startTime}}</view>
+          </view>
+      </view>
+   </view>-->
 </view>

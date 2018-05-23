@@ -1,2 +1,35 @@
-<!--pages/home/home.wxml-->
-<text>pages/home/home.wxml</text>
+
+  <view class="bg">
+    <view class="imgBox">
+      <image src="../../images/login/logo.png" class="smsImage" mode="widthFix"></image> 
+    </view>
+  </view>
+  <view class='conbox'>
+  <!--票券-->
+    <view class='useli'>
+      <image src='../../images/me/icon1.png' class="icons" mode="widthFix"></image>
+      <text class="title">我的票券</text>
+      <text class='right'> > </text>
+    </view>
+    <!--通知-->
+    <view class='useli'>
+      <image src='../../images/me/icon2.png' class="icons" mode="widthFix"></image>
+      <text class="title">我的通知</text>
+      <text class='right'> > </text>
+    </view>
+    <!--发票-->
+    <view class='useli'>
+      <image src='../../images/me/icon3.png' class="icons" mode="widthFix"></image>
+      <text class="title">我的发票</text>
+      <text class='right'> > </text>
+    </view>
+    <!--邀请函-->
+    <view class='useli'>
+      <image src='../../images/me/icon4.png' class="icons" mode="widthFix"></image>
+      <text class="title">我的邀请函</text>
+      <text class='right'> > </text>
+    </view>
+  </view>
+
+
+ 

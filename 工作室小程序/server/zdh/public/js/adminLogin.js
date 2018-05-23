@@ -19,7 +19,10 @@ function keyLogin(event) {
             document.getElementById("btn_login").click();  //调用登录按钮的登录事件
     }
     
-    $().ready(function(){
+    $(function(){
+
+    })
+      $(function(){
         $('#btn_login').click(function(){
             var url="/admin"
             var username=$('#username').val();
@@ -31,7 +34,7 @@ function keyLogin(event) {
             console.log(pwd)
             $.post(url,{ sync:false,
                 username:"admin",
-                pwd:"admin" 
+                pwd:'admin' 
             },
            
             function(callbackData){

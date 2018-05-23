@@ -1,6 +1,6 @@
 $().ready(function(){
     $("#submit").click(function () {
-        var topic=$('#topic').val();
+        var topic=$('#topic').val().ser;
         var Summary=$('#Summary').val();
         var datetimeStart=$("#datetimeStart").val();
         alert(datetimeStart)
@@ -16,7 +16,7 @@ $().ready(function(){
             // a.append("topic",$('#topic').val());
             a.append("datetimeStart",datetimeStart);
             var formData = new FormData($( "#uploadForm" )[0]);  
-           alert(JSON.stringify(formData));
+        //   alert(JSON.stringify(formData));
             $.ajax({ 
                 url: "/image/uploadImage", 
                 type: "POST", 

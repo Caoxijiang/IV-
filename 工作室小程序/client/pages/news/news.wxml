@@ -1,5 +1,5 @@
 <!--pages/news/news.wxml-->
-<swiper indicator-dots="{{indicatorDots}}"
+<!-- <swiper indicator-dots="{{indicatorDots}}"
   autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-dots="true" autoplay="true">
   <block>
     <swiper-item>
@@ -16,4 +16,61 @@
        <view class='pro-date'>{{metingInfo[index].metting_startTime}}</view>
      </view>
     </view>
+   </view>  -->
+
+<!--pages/news/news.wxml-->
+<view class="item-header">
+    <view class="item-search">
+      <image class="item-image" src="../../images/index-icon/seach.png" mode="widthFix" />
+       <input class="item-input" placeholder="搜索" focus="{{focus}}" />
+    </view>
+    <image class="code" src="../../images/index-icon/code.png" mode="widthFix" />     
+ </view>
+<swiper indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-dots="true" autoplay="true">
+  <block>
+    <swiper-item>
+      <image src="{{imgUrlss}}" class="slide-image" width="355" height="150"/>
+    </swiper-item>
+  </block>
+</swiper>
+<!--对pro-item 循环-->
+<view class='pro-item'>
+    <image class='pro-logo' src='./../../images/index-icon/list1.jpg'></image>
+    <view class='pro-body'>
+      <view class='pro-title'>英特尔中国研究院院长宋继强一行莅临青岛智能院参观考察</view>
+      <view class='pro-date'>2018年04/28-05/01</view>
+    </view>
+</view>
+<!--对pro-item 循环-->
+<!--对pro-item 循环-->
+<view class='pro-item'>
+    <image class='pro-logo' src='./../../images/index-icon/list1.jpg'></image>
+    <view class='pro-body'>
+      <view class='pro-title'>英特尔中国研究院院长宋继强一行莅临青岛智能院参观考察</view>
+      <view class='pro-date'>2018年04/28-05/01</view>
+    </view>
+</view>
+<!--对pro-item 循环-->
+<!--对pro-item 循环-->
+<view class='pro-item'>
+    <image class='pro-logo' src='./../../images/index-icon/list1.jpg'></image>
+    <view class='pro-body'>
+      <view class='pro-title'>英特尔中国研究院院长宋继强一行莅临青岛智能院参观考察</view>
+      <view class='pro-date'>2018年04/28-05/01</view>
+    </view>
+</view>
+<!--对pro-item 循环-->
+
+<!--原代码-->
+  <!-- <view class='pro-content' bindtap='toDetail'wx:for="{{metingInfo}}" wx:key="index">
+         <view class='pro-item'>
+    <image class='pro-logo' src='{{metingInfo[index].metting_imageUrl}}'></image>
+    <view class='pro-body'>
+       <view class='pro-title'>{{metingInfo[index].metting_topic}}</view>
+        <view class="pro-Desc">{{metingInfo[index].metting_Summary}}</view> 
+       <view class='pro-date'>{{metingInfo[index].metting_startTime}}</view>
+     </view>
+    </view>
    </view> 
+   -->

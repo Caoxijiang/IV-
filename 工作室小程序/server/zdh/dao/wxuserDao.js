@@ -56,7 +56,6 @@ module.exports = {
 		pool.getConnection(function(err, connection){
 			connection.query($sql.selectuserwxUserid ,[req],function(err, results, fields){
 				if(err) throw err;
-				connection.release();
 				callback(results[0])
 			});
 		})

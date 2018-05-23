@@ -1,0 +1,52 @@
+ <view class="item-header">
+    <view class="item-search">
+      <image class="item-image" src="/../../images/index-icon/seach.png" mode="widthFix" />
+       <input class="item-input" placeholder="搜索" focus="{{focus}}" />
+    </view>
+    <image class="code" src="/../../images/index-icon/code.png" mode="widthFix" />
+      
+ </view>
+
+<swiper indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-dots="true" autoplay="true">
+  <block  wx:for="{{imgUrls}}">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image" width="355" height="150"/>
+    </swiper-item>
+  </block>
+</swiper>
+<view class="introduction-forum">
+  <view class="introduction-content">
+      <view class='introduction-title introduction-line'>
+        <!-- {{IntroductionInfo[0].topic}} -->
+        2018动漫高峰论坛
+      </view>
+      <view class='introduction-line'>
+      <image class='introduction-img' src='/../../images/introduction-icon/2-04.png' mode="widthFix"></image> 2018.06/26 08:00-2016.06/29 18:00<!--{{IntroductionInfo[0].time}}-->
+      </view>
+     <view class='introduction-line'><image class='introduction-img' src='/../../images/introduction-icon/2-05.png' mode="widthFix"></image> 常熟虞山镇黄河路288号常熟国际饭店<!--{{IntroductionInfo[0].address}}--></view>
+      <view class='introduction-moey introduction-line'><image class='introduction-img' src='/../../images/introduction-icon/2-06.png' mode="widthFix"></image> 600<!--{{IntroductionInfo[0].money}}-->起</view>
+  </view>
+</view>
+<view class='introduction-body'>
+   <view class='introduction-msg'>
+      <view class='introduction-bodyTitle'>
+       <image src='/../../images/introduction-icon/2-02.png' />
+       大会介绍
+       <image src='/../../images/introduction-icon/2-03.png' />
+      </view>
+      <view class='introduction-bodyContent'>
+            <text class='introduce'>
+            由IEEE智能交通系统协会（ITSS）主办的第29届国机智能车大会（ IEEE IV 2018）将于2018年6月26号在中国常熟开幕。IEEE Intelligent Vechicle Symposium (IEEE 国机智能车大会)是 IEEE 智能交通协会举办的两大年度旗舰会议之一，旨在为全球该领域相关的研究人员、工程师、学者提供当今最先进的交流研讨机会。<br />
+            本届大会涉及新能源汽车、特种地面车辆、智能车辆控制与讨。目前，第29届IEEE IV已收到了来自世界各地的600余篇学术论文，创历年新高。
+<!--{{IntroductionInfo[0].Introduction}}\n-->
+            </text>
+      </view>
+   </view>
+</view>
+<view>
+</view>
+<view class='introduction-footer'>
+     <view class='introduction-footerL'><image src='/../../images/introduction-icon/2-07.png'></image>分享会议</view>
+     <view class='introduction-footerR'>立即报名</view>
+</view>

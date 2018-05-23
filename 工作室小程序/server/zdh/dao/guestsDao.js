@@ -35,7 +35,6 @@ module.exports={
             connection.query($sql.selectguestsInfo,function(err,results,fields){
                 if(err) throw err;
                 callback(results);
-                connection.release;
             })
         })
     },

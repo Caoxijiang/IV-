@@ -1,15 +1,19 @@
 {
-  "pages":[
+  "pages": [
     "pages/login/login",
     "pages/index/index",
     "pages/home/home",
     "pages/news/news",
     "pages/user/user",
     "pages/sms/sms",
-    "pages/Introduction/Introduction",
-    "pages/Schedule/Schedule",
-    "pages/modal/modal"
-
+    "pages/subpages/Introduction/Introduction",
+    "pages/subpages/Schedule/Schedule",
+    "pages/subpages/Stay/Stay",
+    "pages/subpages/Contact/Contact",
+    "pages/subpages/Cooperator/Cooperator",
+    "pages/subpages/Guest/Guest",
+    "pages/subpages/News/News",
+    "pages/subpages/Registor/Registor"
   ],
   "window": {
     "backgroundTextStyle": "light",
