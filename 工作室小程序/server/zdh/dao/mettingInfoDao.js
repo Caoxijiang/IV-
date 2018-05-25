@@ -139,6 +139,15 @@ module.exports={
                 callback(msg);
             })
         })
+    },
+    wxselectmetList:function(callback){
+        pool.getConnection(function(err,connection){
+            connection.query($sql.wxselectmetinfList,function(err,results,fields){
+                if(err) throw err;
+                connection.release();
+                callback(results);
+            })
+        })
     }
 
 }

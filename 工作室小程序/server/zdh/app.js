@@ -24,7 +24,11 @@ var adminschedule=require('./routes/adminscheduleInfo');
 var damincputilInfo=require('./routes/admincputilInfo');
 var adminctInfo =require('./routes/adminctInfo.js');
 var adminrecommendInfo=require('./routes/adminrecommend')
-
+var news=require("./routes/news");
+var guests=require("./routes/guests")
+var schedule=require("./routes/schedule")
+var adminticket=require('./routes/adminsticketInfo')
+var mainuserInfo=require("./routes/mainuserinfo")
 var redis = require('redis');
 var session = require('express-session');
 var RedisStore = require('connect-redis')(session);
@@ -94,7 +98,11 @@ app.use('/adminschedule',adminschedule);
 app.use("/damincputilInfo",damincputilInfo);
 app.use("/adminctInfo",adminctInfo)
 app.use("/admincomm",adminrecommendInfo)
-
+app.use("/news",news)
+app.use('/guests',guests)
+app.use('/schedule',schedule)
+app.use("/adminticket",adminticket)
+app.use("/mainuserInfo",mainuserInfo)
 //app.use('/redis',redis);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

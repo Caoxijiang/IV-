@@ -1,52 +1,80 @@
 var express = require('express');
 var router = express.Router();
-var indexInfo=require('../dao/indexDao');
+var meetingeDao=require('../dao/mettinginfoDao');
+var indexDao=require('../dao/indexDao')
+var secret = require('../conf/secret');
+var client=require("../Redis/RedisServer")
 /* GET home page. */
-router.get('/webimageinfo', function(req, res, next) {
-  var mark="1";
-  indexInfo.selectwebImageinfo(mark,function(data){
-    if(data){
-      var url=[];
-      for(var obj of data){
-         url.unshift(obj.bullupmall_webcommodity_image_url)
+// router.get('/webimageinfo', function(req, res, next) {
+//   var mark="1";
+//   indexInfo.selectwebImageinfo(mark,function(data){
+//     if(data){
+//       var url=[];
+//       for(var obj of data){
+//          url.unshift(obj.bullupmall_webcommodity_image_url)
+//       }
+//      res.send(url)
+//     }else{
+//       var msg="请求错误";
+//       res.end(msg);
+//      } 
+//   })
+// });
+
+router.get('/mettinginfo', function(req, res, next) {
+  var token=req.query.token;
+  client.get(token,function(err,value){
+    if(token!=secret.SECRET){
+      var status_err="err";
+      res.send(status_err);
+      }else{ 
+            meetingeDao.selectmeetcomlistInfo(function(data){
+              if(!data.length==0){
+                  var arr=[];
+                  for(var obj of data){
+                      console.log(11)
+                      meetingeDao.selectcommListBymetinfid(obj.metting_id,function(ress){
+                          if(ress){
+                              arr.push(ress)
+                              if(arr.length==data.length){
+                                  res.send(arr)
+                              }
+                          }
+                      })
+                  }
+              }else{
+                var status_err="SERVERERR";
+                res.end(status_err);
+              }
+          })
       }
-     res.send(url)
-    }else{
-      var msg="请求错误";
-      res.end(msg);
-     } 
-  })
-});
 
-router.get('/shopimageinfo', function(req, res, next) {
-  var mark="2";
-  indexInfo.selectshopImageinfo(mark,function(data){
-    if(data){
-      
-      var urlandid=data.urllist;
-      var shopinfo=[];
-      for(var obj of urlandid){
-        indexInfo.selectshopinfo(String(obj.bullupmall_commodity_image_url),function(result){ 
-          if(result){
-             shopinfo.push(result)
-            // console.log(JSON.stringify(shopinfo));
-            if(shopinfo.length==urlandid.length){
-             // console.log(JSON.stringify(shopinfo));
-              res.json(shopinfo);
-            }
-            return;
-          }
-        });   
-      } 
+  });
+})
 
-      
-      
-    }else{
-      var msg="请求错误";
-      res.end(msg);
-     } 
-  })
-});
+
+router.get('/carouselinfo', function(req, res, next) {
+  var token=req.query.token || req.body.token;
+  client.get(token,function(err,value){
+    if(token!=secret.SECRET){
+      var status_err="err";
+      res.send(status_err);
+      }else{ 
+        indexDao.selectIndexCarouse(function(data){
+              if(data){
+                console.log(JSON.stringify(data))
+                res.send(data);
+              }else{
+                var status_err="SERVERERR"
+                res.end(status_err);
+              }
+            });
+      }
+
+  });
+})
+
+
 
 
 module.exports = router;

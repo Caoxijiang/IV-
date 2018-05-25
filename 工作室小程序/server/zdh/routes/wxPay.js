@@ -15,39 +15,30 @@ var key = wxConfig.Mch_key;
  */
 router.all('/wx_pay', function(req, res, next) {
     var param = req.query || req.params; 
-
-    if(param.out_trade_no){
-        var oldout_trade_no=param.out_trade_no;
-        ordersInfo.deleteoldOrderAccount(oldout_trade_no,function(msg){
-            console.log(msg.delMsg);
-        })
-    }else{
-        var out_trade_no = wxConfig.getWxPayOrdrID();
-    }
-    var token= req.query.openid;
-    console.log("session_token:"+token)
+    var token= req.query.openid || req.param.openid;
+    
     client.get(token,function(err,value){
         console.log(value);
         if(token!=secret.SECRET){
-            var session_token="1";
-            res.end(session_token);
+            var status_err="err";
+            res.send(status_err);
         }else{
             var openid = JSON.parse(value).openid;
             console.log("openid:"+openid)
         } 
          var body = param.title; // 商品描述
         //  var out_trade_no = wxConfig.getWxPayOrdrID(); // 商户订单号
-         var total_fee = param.total*100; // 订单价格 单位是 分
+         var total_fee = param.price; // 订单价格 单位是 分
          var timestamp = Math.round(new Date().getTime()/1000); // 当前时间
-         var orderinfo={};
-         orderinfo.openid=openid;
-         orderinfo.account=out_trade_no;
-         orderinfo.name=body;
-         orderinfo.user_order_start_time=timestamp;
-         orderinfo.total_fee=total_fee/100;
-       
+        //  var orderinfo={};
+        //  orderinfo.openid=openid;
+        //  orderinfo.account=out_trade_no;
+        //  orderinfo.name=body;
+        //  orderinfo.user_order_start_time=timestamp;
+        //  orderinfo.total_fee=total_fee;
+             var out_trade_no = wxConfig.getWxPayOrdrID();
              var spbill_create_ip = req.ip.replace(/::ffff:/, ''); // 获取客户端ip
-             var notify_url = 'http://dfe0757c.ngrok.io/wxPay/wxPaycallback' // 支付成功的回调地址  可访问 不带参数
+             var notify_url = 'https://192.168.3.117:3006/wxPay/wxPaycallback' // 支付成功的回调地址  可访问 不带参数
              var nonce_str = ManthNum(); // 随机字符串
              var bodyData = '<xml>';
              bodyData += '<appid>' + wxConfig.AppID + '</appid>';  // 小程序ID
@@ -76,6 +67,7 @@ router.all('/wx_pay', function(req, res, next) {
              bodyData += '</xml>';
                 // 微信小程序统一下单接口
              var urlStr = 'https://api.mch.weixin.qq.com/pay/unifiedorder';
+             console.log(bodyData)
              request({
                  url: urlStr,
                  method: 'POST',
@@ -86,8 +78,6 @@ router.all('/wx_pay', function(req, res, next) {
                      var returnValue = {};
                      parseString(body, function (err, result) {
                          if (result.xml.return_code[0] == 'SUCCESS') {
-                            ordersInfo.insertOrdersByuserId(orderinfo,function(data){
-                             console.log("order"+JSON.stringify(data));
                              returnValue.msg = '操作成功';
                              returnValue.status = '100';
                              returnValue.out_trade_no = out_trade_no;  // 商户订单号
@@ -98,10 +88,9 @@ router.all('/wx_pay', function(req, res, next) {
                              returnValue.paySign = paysignjs(wxConfig.AppID, returnValue.nonceStr, returnValue.package, 'MD5',timestamp); // 签名
                            //  ordersInfo.insertOrdersByuserId(user_id,)
                              res.end(JSON.stringify(returnValue));
-                            });
                          } else{
                              returnValue.msg = result.xml.return_msg[0];
-                             returnValue.tokenaging=session_token;
+                            // returnValue.tokenaging=session_token;
                              returnValue.status = '102';
                              res.end(JSON.stringify(returnValue));
                          }
@@ -128,35 +117,6 @@ router.post('/wxPaycallback', function(req, res, next) {
             wxPayCallback.transaction_id=body.transaction_id;
             wxPayCallback.status="1";
             console.log("PaySuccessCalback"+JSON.stringify(wxPayCallback));
-            ordersInfo.selectOrdersAccount(wxPayCallback.openid,function(data){
-                if(data){
-                var account=data.Allamount;
-                for(var obj in account){
-                      var num=account[obj].order_account;
-                }
-                    console.log("obj",account[obj].order_account)
-                    if(wxPayCallback.out_trade_no==num && body.result_code=="SUCCESS"){
-                        console.log("13132131》》》》》")
-                        ordersInfo.updataStatusAndinsertendTime(wxPayCallback,function(data){
-                            if(data){
-                                console.log("data==>","订单日期更新成功"+JSON.stringify(data));
-
-                                var xml = '<xml><return_code><![CDATA[SUCCESS]]></return_code><return_msg><![CDATA[OK]]></return_msg></xml>';
-                                res.send(xml);
-                            }else{
-                                console.log("订单更新失败");
-                                var xml = '<xml><return_code><![CDATA[SUCCESS]]></return_code><return_msg><![CDATA[error]]></return_msg></xml>';
-                                res.send(xml);
-                            }
-                        });
-                    }else{
-                        console.log("无效订单"+wxPayCallback.out_trade_no);
-                    };
-                
-              }else{
-                  console.error();
-              }
-            });
             
         }else{
             console.log("支付结果通知失败:"+new Date().getTime());
@@ -262,3 +222,5 @@ module.exports = router;
 
 
 // console.log(time.formatTime(1517056961,"Y-M-D h:m:s") )
+
+

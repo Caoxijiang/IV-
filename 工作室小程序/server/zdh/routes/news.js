@@ -1,28 +1,46 @@
 var express = require('express');
 var router = express.Router();
+var meetingeDao=require('../dao/mettinginfoDao');
+var indexDao=require('../dao/indexDao')
 var secret = require('../conf/secret');
 var client=require("../Redis/RedisServer")
-var IntroductionDao=require('../dao/IntroductionDao');
-router.all("/select",function(req,res){
-    var admin="admin"
-    var token=req.query.token;
+
+
+
+
+router.get('/wxnews', function(req, res, next) {
+    var token=req.query.token || req.body.token;
     client.get(token,function(err,value){
       if(token!=secret.SECRET){
         var status_err="err";
         res.send(status_err);
         }else{ 
-            IntroductionDao.selectInfo(admin,function(result){
-                if(result){
-                    res.send(result)
+           meetingeDao.wxselectmetList(function(data){
+                if(data){
+                    res.send(data)
                 }else{
                     var status_err="SERVERERR"
                     res.end(status_err);
                 }
-            })
+           })
         }
   
     });
-})
+  })
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

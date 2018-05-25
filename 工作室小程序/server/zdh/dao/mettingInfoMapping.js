@@ -8,6 +8,7 @@ var meetingInfo={
     insertrecommendInfo:"insert into recommend_metinfo(user_id,metting_id) values(?,?)",
     selectcommfromcommInfo:"select metting_id from recommend_metinfo",
     selectcommeetingList:"select * from meeting_info where metting_id=?",
-    deletecomminfobymettingid:"delete from recommend_metinfo where metting_id=?"
+    deletecomminfobymettingid:"delete from recommend_metinfo where metting_id=?",
+    wxselectmetinfList:"select * from meeting_info"
 }   
 module.exports=meetingInfo;
