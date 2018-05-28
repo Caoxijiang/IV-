@@ -12,7 +12,7 @@ var pool  = mysql.createPool($util.extend({},$conf.mysql));
    module.exports = {
     insertInfo:function(req,callback){
         pool.getConnection(function(err,connection){
-            connection.query($sql.insertorderInfo,[req.Num,req.total,req.tname,req.phoneNum,time.formatTime(req.startTime,"Y-M-D h:m:s"),],function(err,results,fields){
+            connection.query($sql.insertorderInfo,[req.Num,req.total,req.tname,req.phoneNum,time.formatTime(req.startTime,"Y-M-D h:m:s")],function(err,results,fields){
                 if(err) throw err;
                 var msg="SUCCESS";
                 connection.release();
@@ -42,10 +42,11 @@ var pool  = mysql.createPool($util.extend({},$conf.mysql));
     },
     updataorderstatus:function(req,callback){
         pool.getConnection(function(err,connection){
-            connection.query($sql.updateorderstatus,[req.status,req.endtime,req.phoneNum],function(err,results,fields){
+            connection.query($sql.updateorderstatus,[req.status,time.Format(req.time_end),req.out_trade_no],function(err,results,fields){
                 if(err) throw err;
+                var msg="SUCCESS";
                 connection.release();
-                callback(results)
+                callback(msg)
 
             })
         })

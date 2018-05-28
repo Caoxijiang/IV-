@@ -33,7 +33,7 @@ router.all('/wx_pay', function(req, res, next) {
              var out_trade_no = wxConfig.getWxPayOrdrID();
             // var spbill_create_ip = req.ip.replace(/::ffff:/, ''); // 获取客户端ip
              var spbill_create_ip= get_client_ip(req);
-             var notify_url = 'http://dc0640c3.ngrok.io/wxPay/wxPaycallback' // 支付成功的回调地址  可访问 不带参数
+             var notify_url = 'http://a56c6d88.ngrok.io/wxPay/wxPaycallback' // 支付成功的回调地址  可访问 不带参数
              var nonce_str = ManthNum(); // 随机字符串
              var bodyData = '<xml>';
              bodyData += '<appid>' + wxConfig.AppID + '</appid>';  // 小程序ID
@@ -86,8 +86,8 @@ router.all('/wx_pay', function(req, res, next) {
                              var orderinfo={};
                              orderinfo.Num=out_trade_no;
                              orderinfo.total=total_fee;
-                             orderinfo.tname=body;
-                             orderinfo.phoneNum=phoneNum;
+                             orderinfo.tname=param.title;
+                             orderinfo.phoneNum="15192752963";
                              orderinfo.startTime=timestamp;
                              ordersInfo.insertInfo(orderinfo,function(data){
                                 if(data){
@@ -130,6 +130,15 @@ router.post('/wxPaycallback', function(req, res, next) {
             wxPayCallback.transaction_id=body.transaction_id;
             wxPayCallback.status="1";
             console.log("PaySuccessCalback"+JSON.stringify(wxPayCallback));
+            ordersInfo.updataorderstatus(wxPayCallback,function(data){
+                if(data=="SUCCESS"){
+                    console.log("支付结果更新成功:"+new Date().getTime());
+                    var xml = '<xml><return_code><![CDATA[SUCCESS]]></return_code><return_msg><![CDATA[OK]]></return_msg></xml>';
+                    res.send(xml);
+                }else{
+                    console.log("订单"+body.out_trade_no+"更新失败");
+                }
+            })
             
         }else{
             console.log("支付结果通知失败:"+new Date().getTime());

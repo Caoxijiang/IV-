@@ -57,10 +57,9 @@ router.get('/encryptData', function (req, res, next) {
       var session_key = JSON.parse(value).session_key;
       var pc = new WXBizDataCrypt(AppID, session_key);
       var decrypt_data = pc.decryptData(req.query.encryptedData, req.query.iv);
-      if(decrypt_data==null || decrypt_data==undefined){
-          var status_err="Eerr"
-          res.send(status_err)
-
+      if(decrypt_data==null || decrypt_data==undefined || decrypt_data.length==0 || decrypt_data=="" ||decrypt_data.phoneNumber==undefined ){
+        var status_err="Eerr"
+        res.send(status_err)
       }else{
         var wxphoneNum=decrypt_data.phoneNumber;
         console.log(JSON.stringify("手机号 ："+decrypt_data.phoneNumber));

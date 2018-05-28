@@ -37,7 +37,7 @@ router.all('/admin',function(req,res){
 router.all('/welcome',function(req,res){
     console.log(req.session.userName)
    if(req.originalUrl != "/" && !req.session.userName){
-     res.redirect("/");
+     res.redirect("/","<javascript>alert('登录过期')</javascript>");
    }else{
     res.render('admin/welcome')
    }
