@@ -11,6 +11,5 @@ var schedule={
     dellalltimeIdBytid:"delete  from schedule_timeid where schedule_time_id=?",
     updatadanInfo:"update schedule_timeinfo set schedule_time_content=?,schedule_time_dan=? where schedule_time_id=?"
 
-
 }
 module.exports=schedule;

@@ -42,7 +42,7 @@ module.exports={
     },
     updatsticketInfo:function(req,callback){
         pool.getConnection(function(err,connection){
-            connection.query($sql.updteticketinfoByticketid,[req.type,req.details,req.price,req.status,req.ticketId],function(err,results,fields){
+            connection.query($sql.updteticketinfoByticketid,[req.type,req.details,req.price,req.status,req.ticketID],function(err,results,fields){
                 if(err) throw err;
                 var msg="UPDATASUCCESS";
                 connection.release();

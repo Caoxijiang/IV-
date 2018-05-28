@@ -16,7 +16,7 @@ var key = wxConfig.Mch_key;
 router.all('/wx_pay', function(req, res, next) {
     var param = req.query || req.params; 
     var token= req.query.openid || req.param.openid;
-    
+    var phoneNum=req.query.phoneNum || req.param.phoneNum;
     client.get(token,function(err,value){
         console.log(value);
         if(token!=secret.SECRET){
@@ -28,17 +28,12 @@ router.all('/wx_pay', function(req, res, next) {
         } 
          var body = param.title; // 商品描述
         //  var out_trade_no = wxConfig.getWxPayOrdrID(); // 商户订单号
-         var total_fee = param.price; // 订单价格 单位是 分
-         var timestamp = Math.round(new Date().getTime()/1000); // 当前时间
-        //  var orderinfo={};
-        //  orderinfo.openid=openid;
-        //  orderinfo.account=out_trade_no;
-        //  orderinfo.name=body;
-        //  orderinfo.user_order_start_time=timestamp;
-        //  orderinfo.total_fee=total_fee;
+            var total_fee = param.price; // 订单价格 单位是 分
+            var timestamp = Math.round(new Date().getTime()/1000); // 当前时间
              var out_trade_no = wxConfig.getWxPayOrdrID();
-             var spbill_create_ip = req.ip.replace(/::ffff:/, ''); // 获取客户端ip
-             var notify_url = 'https://192.168.3.117:3006/wxPay/wxPaycallback' // 支付成功的回调地址  可访问 不带参数
+            // var spbill_create_ip = req.ip.replace(/::ffff:/, ''); // 获取客户端ip
+             var spbill_create_ip= get_client_ip(req);
+             var notify_url = 'http://dc0640c3.ngrok.io/wxPay/wxPaycallback' // 支付成功的回调地址  可访问 不带参数
              var nonce_str = ManthNum(); // 随机字符串
              var bodyData = '<xml>';
              bodyData += '<appid>' + wxConfig.AppID + '</appid>';  // 小程序ID
@@ -86,8 +81,26 @@ router.all('/wx_pay', function(req, res, next) {
                              returnValue.timestamp = timestamp.toString(); // 时间戳
                              returnValue.package = 'prepay_id=' + result.xml.prepay_id[0]; // 统一下单接口返回的 prepay_id 参数值
                              returnValue.paySign = paysignjs(wxConfig.AppID, returnValue.nonceStr, returnValue.package, 'MD5',timestamp); // 签名
-                           //  ordersInfo.insertOrdersByuserId(user_id,)
-                             res.end(JSON.stringify(returnValue));
+                             
+                            
+                             var orderinfo={};
+                             orderinfo.Num=out_trade_no;
+                             orderinfo.total=total_fee;
+                             orderinfo.tname=body;
+                             orderinfo.phoneNum=phoneNum;
+                             orderinfo.startTime=timestamp;
+                             ordersInfo.insertInfo(orderinfo,function(data){
+                                if(data){
+                                    var msg="SUCCESS";
+                                    returnValue.msg=msg;
+                                    res.end(JSON.stringify(returnValue));
+                                }else{
+                                    var msg="ERR";
+                                    returnValue.msg=msg;
+                                    res.end(JSON.stringify(returnValue));
+                                }
+                             })
+
                          } else{
                              returnValue.msg = result.xml.return_msg[0];
                             // returnValue.tokenaging=session_token;
@@ -195,7 +208,17 @@ function ManthNum(){
 };;
 
 
-
+ function get_client_ip (req) {
+    var ip = req.headers['x-forwarded-for'] ||
+        req.ip ||
+        req.connection.remoteAddress ||
+        req.socket.remoteAddress ||
+        req.connection.socket.remoteAddress || '';
+    if(ip.split(',').length>0){
+        ip = ip.split(',')[0]
+    }
+    return ip;
+};
 
 module.exports = router;
 

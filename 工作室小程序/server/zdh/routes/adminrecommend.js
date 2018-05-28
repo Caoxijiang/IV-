@@ -39,7 +39,6 @@ router.all("/selectcomminfo",function(req,res ){
             if(data){
                 var arr=[];
                 for(var obj of data){
-                    console.log(11)
                     meetingeDao.selectcommListBymetinfid(obj.metting_id,function(ress){
                         if(ress){
                             arr.push(ress)

@@ -34,32 +34,55 @@ router.all('/orders',function(req,res,next){
     });
 });
 router.all('/updateOrderAccountList',function(req,res,next){
-    var OldAccount=req.query.Account;
-
-    console.log(OldAccount);
-    // client.get(token,function(err,value){
-    //     if(token!=secret.SECRET){
-    //         var session_token="1";
-    //         res.json(session_token);
-    //     }else{
-    //         var openid = JSON.parse(value).openid;
-    //        // console.log("openid:"+openid)
-    //     }
-            var updateStatus={};
-            updateStatus.out_trade_no=OldAccount;
-            updateStatus.time_end=Math.round(new Date().getTime()/1000);
-            updateStatus.status="3";
-            ordersInfo.updataStatusAndinsertendTime(updateStatus,function(result){
-                if(result){
-                    var msg="updataStatusOK";
-                    res.json(msg);
-                  console.log("更新取消订单:"+OldAccount+" 状态成功");  
+    var token=req.query.token || req.body.token;
+    client.get(token,function(err,value){
+      if(token!=secret.SECRET){
+        var status_err="err";
+        res.send(status_err);
+        }else{ 
+            ordersInfo.updataorderstatus(orderinfo,function(data){
+                if(data=="SUCCESS"){
+                   var  status_err="SUCCESS";
+                   res.send(status_err);
                 }else{
-                    console.log("更新取消订单:"+OldAccount+" 状态失败"); 
-                    var msg="updataStatuserr";
-                    res.json(msg);
+                    var status_err="SERVERERR"
+                    res.end(status_err);
                 }
-         })
-    // });   
+            })
+        }
+  
+    });
 });
+
+
+router.all("/insertorderInfo",function(req,res){
+    var token=req.query.token || req.body.token;
+    client.get(token,function(err,value){
+      if(token!=secret.SECRET){
+        var status_err="err";
+        res.send(status_err);
+        }else{ 
+            var orderinfo={};
+            orderinfo.Num=req.query.Num;
+            orderinfo.total=req.query.total;
+            orderinfo.tname=req.query.tname;
+            orderinfo.phoneNum=req.query.phoneNum;
+            orderinfo.startTime=req.query.startTime;
+            ordersInfo.insertInfo(orderinfo,function(data){
+                if(data=="SUCCESS"){
+                   var  status_err="SUCCESS";
+                   res.send(status_err);
+                }else{
+                    var status_err="SERVERERR"
+                    res.end(status_err);
+                }
+            })
+        }
+  
+    });
+})
+
+
+
+
 module.exports = router;

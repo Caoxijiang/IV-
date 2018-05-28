@@ -29,6 +29,7 @@ var guests=require("./routes/guests")
 var schedule=require("./routes/schedule")
 var adminticket=require('./routes/adminsticketInfo')
 var mainuserInfo=require("./routes/mainuserinfo")
+var wxsticket=require('./routes/sticket')
 var redis = require('redis');
 var session = require('express-session');
 var RedisStore = require('connect-redis')(session);
@@ -103,6 +104,7 @@ app.use('/guests',guests)
 app.use('/schedule',schedule)
 app.use("/adminticket",adminticket)
 app.use("/mainuserInfo",mainuserInfo)
+app.use("/sticket",wxsticket)
 //app.use('/redis',redis);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

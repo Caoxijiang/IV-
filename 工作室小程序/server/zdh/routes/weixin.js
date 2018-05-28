@@ -57,30 +57,37 @@ router.get('/encryptData', function (req, res, next) {
       var session_key = JSON.parse(value).session_key;
       var pc = new WXBizDataCrypt(AppID, session_key);
       var decrypt_data = pc.decryptData(req.query.encryptedData, req.query.iv);
-      var wxphoneNum=decrypt_data.phoneNumber;
-      console.log(JSON.stringify("手机号 ："+decrypt_data.phoneNumber));
-      wxalluserinfo.wxphoneNum=wxphoneNum;
-      wxuserDao.selectwxphoneNUm(wxphoneNum,function(result){
-        if(result==undefined){
-          wxuserDao.insertwxUserInfo(wxalluserinfo,function(result){
-            if(result.msg=="SUCCESS"){
-              res.send({
-                msg:"REGISTEREDSUCCESS"
-              })
-            }else{
-              res.send({msg:"Servererror"})
-            }
-          })   
-        }else if(result.wx_phoneNumRole==1){
-          res.send({
-             msg:"ADMINLOGINSUCCESS"
-          })
-        }else{
-          res.send({
-            msg:"LOGINSUCCESS"
-         })
-        }
-      })
+      if(decrypt_data==null || decrypt_data==undefined){
+          var status_err="Eerr"
+          res.send(status_err)
+
+      }else{
+        var wxphoneNum=decrypt_data.phoneNumber;
+        console.log(JSON.stringify("手机号 ："+decrypt_data.phoneNumber));
+        wxalluserinfo.wxphoneNum=wxphoneNum;
+        wxuserDao.selectwxphoneNUm(wxphoneNum,function(result){
+          if(result==undefined){
+            wxuserDao.insertwxUserInfo(wxalluserinfo,function(result){
+              if(result.msg=="SUCCESS"){
+                res.send({
+                  msg:"REGISTEREDSUCCESS"
+                })
+              }else{
+                res.send({msg:"Servererror"})
+              }
+            })   
+          }else if(result.wx_phoneNumRole==1){
+            res.send({
+               msg:"ADMINLOGINSUCCESS"
+            })
+          }else{
+            res.send({
+              msg:"LOGINSUCCESS"
+           })
+          }
+        })
+      }
+
 
      }
   }) 
