@@ -69,7 +69,8 @@ router.get('/encryptData', function (req, res, next) {
             wxuserDao.insertwxUserInfo(wxalluserinfo,function(result){
               if(result.msg=="SUCCESS"){
                 res.send({
-                  msg:"REGISTEREDSUCCESS"
+                  msg:"REGISTEREDSUCCESS",
+                  wxphone:wxphoneNum
                 })
               }else{
                 res.send({msg:"Servererror"})
@@ -77,11 +78,13 @@ router.get('/encryptData', function (req, res, next) {
             })   
           }else if(result.wx_phoneNumRole==1){
             res.send({
-               msg:"ADMINLOGINSUCCESS"
+               msg:"ADMINLOGINSUCCESS",
+               wxphone:wxphoneNum
             })
           }else{
             res.send({
-              msg:"LOGINSUCCESS"
+              msg:"LOGINSUCCESS",
+              wxphone:wxphoneNum
            })
           }
         })

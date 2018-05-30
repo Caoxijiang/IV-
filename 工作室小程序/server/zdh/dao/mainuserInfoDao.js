@@ -10,7 +10,7 @@ var pool  = mysql.createPool($util.extend({}, $conf.mysql));
 module.exports={
     insertmedia:function(req,callback){
         pool.getConnection(function(err,connection){
-            connection.query($sql.insertmediaInfo,[req.tickedId,req.name,req.phone,req.email,req.util,req.job,req.platform],function(err, results, fields){
+            connection.query($sql.insertmediaInfo,[req.name,req.phone,req.email,req.util,req.job,req.platform],function(err, results, fields){
                 if(err) throw err;
                 var msg="SUCCESS";
                 connection.release();
@@ -30,7 +30,7 @@ module.exports={
     },
     insertVip:function(req,callback){
         pool.getConnection(function(err,connection){
-            connection.query($sql.insertVipInfo,[req.tickedId,req.name,req.phone,req.email,req.util,req.job,req.VipNum],function(err, results, fields){
+            connection.query($sql.insertVipInfo,[req.name,req.phone,req.email,req.util,req.job,req.VipNum],function(err, results, fields){
                 if(err) throw err;
                 var msg="SUCCESS";
                 connection.release();

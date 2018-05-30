@@ -62,6 +62,7 @@ router.all("/submitphoneInfo",function(req,res){
                     if(datas.msg=="SUCCESS"){
                         res.send({
                             code:0,
+                            phoneNum:phonenumber
                         });
                     }else{
                         res.send({
@@ -73,10 +74,12 @@ router.all("/submitphoneInfo",function(req,res){
             }else if(data.user_phoneNumRole==1){
                 res.send({
                     code:"ADMINTOKEN",
+                    phoneNum:phonenumber
                 })
             }  else{
                 res.send({
                     code:3,
+                    phoneNum:phonenumber,
                 })
             }
         })

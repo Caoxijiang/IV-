@@ -19,7 +19,7 @@ router.all("/media",function(req,res){
             mediainfo.email=req.query.email;
             mediainfo.util=req.query.util;
             mediainfo.job=req.query.job
-            mediainfo.platform=req.query.job;
+            mediainfo.platform=req.query.platform;
             mainUserinfoDao.insertmedia(mediainfo,function(data){
                 if(data=="SUCCESS"){
                     res.send({msg:"SUCCESS"});
@@ -63,7 +63,7 @@ router.all("/Stu",function(req,res){
 })
 
 router.all("/Vip",function(req,res){
-    var admin="admin"
+    //var admin="admin"
     var token=req.query.token;
     client.get(token,function(err,value){
       if(token!=secret.SECRET){
@@ -72,13 +72,12 @@ router.all("/Vip",function(req,res){
         }else{ 
             var Vipinfo={}
             Vipinfo.name=req.query.name;
-            Vipinfo.tickedId=req.query.tickedId;
             Vipinfo.phone=req.query.phone;
             Vipinfo.email=req.query.email;
             Vipinfo.util=req.query.util;
             Vipinfo.job=req.query.job;
-            Vip.VipNum=req.query.VipNum;
-            mainUserinfoDao.insertmedia(Vipinfo,function(data){
+            Vipinfo.job.VipNum=req.query.VipNum;
+            mainUserinfoDao.insertVip(Vipinfo,function(data){
                 if(data=="SUCCESS"){
                     res.send({msg:"SUCCESS"});
                 }else{

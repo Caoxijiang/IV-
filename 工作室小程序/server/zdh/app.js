@@ -31,6 +31,9 @@ var adminticket=require('./routes/adminsticketInfo')
 var mainuserInfo=require("./routes/mainuserinfo")
 var wxsticket=require('./routes/sticket')
 var adminorderInfo=require('./routes/adminorderInfo')
+var admininvoice=require('./routes/admininvoiceinfo')
+var invoice=require('./routes/invoice')
+var wxctInfo=require("./routes/wxctInfo")
 var redis = require('redis');
 var session = require('express-session');
 var RedisStore = require('connect-redis')(session);
@@ -107,6 +110,9 @@ app.use("/adminticket",adminticket)
 app.use("/mainuserInfo",mainuserInfo)
 app.use("/sticket",wxsticket);
 app.use("/adminorder",adminorderInfo)
+app.use("/adminunvoice",admininvoice)
+app.use("/invoice",invoice)
+app.use("/wxctInfo",wxctInfo)
 //app.use('/redis',redis);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
